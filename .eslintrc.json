@@ -1,3 +1,42 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "requireConfigFile": false
+  },
+  "plugins": ["react", "@typescript-eslint", "import"],
+  "ignorePatterns": ["build/"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["type"], // Type imports (TypeScript types)
+          ["builtin", "external"], // Built-in and external packages
+          ["internal", "parent", "sibling", "index"], // Internal imports
+          ["object", "unknown"] // Other imports (side-effect imports like CSS)
+        ],
+        "newlines-between": "always", // Add new lines between groups
+        "alphabetize": { "order": "asc", "caseInsensitive": true } // Alphabetize within groups
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/no-unused-state": "error",
+    "no-unused-vars": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "array-callback-return": 0,
+    "react/self-closing-comp": "warn"
+  }
 }
