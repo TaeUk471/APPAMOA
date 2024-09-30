@@ -1,0 +1,34 @@
+{
+  "name": "appamoa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky install",
+    "format": "prettier --cache --write .",
+    "lint": "eslint --cache ."
+  },
+  "dependencies": {
+    "next": "14.2.13",
+    "react": "^18",
+    "react-dom": "^18",
+    "styled-components": "^6.1.13",
+    "zustand": "^5.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.13",
+    "eslint-plugin-react": "^7.36.1",
+    "globals": "^15.9.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "typescript": "^5",
+    "typescript-eslint": "^8.7.0"
+  }
+}
