@@ -5,7 +5,7 @@ const theme = {
     black_800: "#171717",
     black_700: "#333236",
     black_600: "#4b4b4b",
-    black_overlay: "#4d4d4d", 
+    black_overlay: "#4d4d4d",
     gray_900: "#787486",
     gray_800: "#9fa6b2",
     gray_700: "#d9d9d9",
@@ -14,10 +14,10 @@ const theme = {
     pink_900: "#ff7b7b",
     pink_400: "#ffcece",
     blue_400: "#76a5ea",
-    purple_100: "#e0ccf2",  
-    purple_500: "#8061e2",  
-    yellow_100: "#f9e7d6",  
-    yellow_500: "#ffd944"  
+    purple_100: "#e0ccf2",
+    purple_500: "#8061e2",
+    yellow_100: "#f9e7d6",
+    yellow_500: "#ffd944",
   },
 
   fontSize: {

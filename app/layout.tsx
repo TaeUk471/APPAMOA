@@ -1,11 +1,18 @@
 // layout.tsx
 import { ReactNode } from "react";
-import "../style/globals.css";
+
+import "../style/globals.js";
+import StyledComponentRegistry from "@lib/styledComponentRegistry";
+
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <StyledComponentRegistry>
+          {children}
+        </StyledComponentRegistry>
+      </body>
     </html>
   );
 }

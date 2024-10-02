@@ -1,1 +1,8 @@
-export default funtcionzzzzzzzzzzzzz;
+export default function Card2() {
+  return (
+    <>
+      
+    </>
+  );
+
+}
