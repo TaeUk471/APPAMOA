@@ -14,6 +14,10 @@ globalStyle(
   }
 );
 
+globalStyle("html", {
+  fontSize : "62.5%",
+});
+
 globalStyle("body", {
   lineHeight: 1,
   fontSize: theme.fontSize.normal,
