@@ -29,7 +29,8 @@
       "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
-      "@hooks/*": ["./hooks/*"]
+      "@hooks/*": ["./hooks/*"],
+      "@styles/*": ["./styles/*"]
     },
     "plugins": [
       {

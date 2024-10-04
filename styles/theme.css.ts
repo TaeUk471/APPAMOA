@@ -29,7 +29,8 @@ export const theme = createGlobalTheme(":root", {
     extraSmall: "1.2rem",
   },
   device: {
-    tablet: "(min-width: 768px) and (max-width : 1023px)",
-    mobile: "(max-width: 767px)",
+    mobile: "screen and (min-width: 480px)",
+    tablet: "screen and (min-width: 768px)",
+    desktop: "screen and (min-width: 1024px)",
   },
 });

@@ -15,7 +15,7 @@ globalStyle(
 );
 
 globalStyle("html", {
-  fontSize : "62.5%",
+  fontSize: "62.5%",
 });
 
 globalStyle("body", {
