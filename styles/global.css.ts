@@ -17,6 +17,7 @@ globalStyle(
 globalStyle("body", {
   lineHeight: 1,
   fontSize: theme.fontSize.normal,
+  fontFamily: "DMSans, Inter, sans-serif",
   backgroundColor: theme.color.gray_500,
 });
 
