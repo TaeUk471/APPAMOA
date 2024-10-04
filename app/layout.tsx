@@ -1,18 +1,21 @@
-// layout.tsx
+// app/layout.tsx
 import { ReactNode } from "react";
 
-import "../style/globals.js";
-import StyledComponentRegistry from "@lib/styledComponentRegistry";
-
+import "../styles/global.css";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body>
-        <StyledComponentRegistry>
-          {children}
-        </StyledComponentRegistry>
-      </body>
+      <head>
+        <title>APPAMOA</title>
+        <meta name="description" content="This is an awesome website about healthcare." />
+        <meta name="keywords" content="healthcare, health, web app" />
+        <meta property="og:title" content="APPAMOA" />
+        <meta property="og:description" content="This is an awesome website about healthcare." />
+        <meta property="og:image" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

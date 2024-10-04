@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  compiler: {
-    styledComponents: true, //styledComponents 를 사용하면서 SSR을 지원
-  },
-};
+import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 
-export default nextConfig;
+export default createVanillaExtractPlugin({
+  reactStrictMode: true,
+  swcMinify: true,
+});

@@ -1,4 +1,7 @@
-const theme = {
+// styles/theme.css.ts
+import { createGlobalTheme } from "@vanilla-extract/css";
+
+export const theme = createGlobalTheme(":root", {
   color: {
     white: "#ffffff",
     black_900: "#000000",
@@ -19,37 +22,14 @@ const theme = {
     yellow_100: "#f9e7d6",
     yellow_500: "#ffd944",
   },
-
   fontSize: {
     large: "1.8rem",
     normal: "1.6rem",
     small: "1.4rem",
     extraSmall: "1.2rem",
   },
-
   device: {
     tablet: "(min-width: 768px) and (max-width : 1023px)",
     mobile: "(max-width: 767px)",
   },
-
-  displays: {
-    spaceBetween: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
-    columnCenter: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    rowCenter: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  },
-};
-
-export default theme;
+});
