@@ -1,11 +1,9 @@
 import { ReactNode } from "react";
 
-import * as S from "@styles/auth/auth.css";
-
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className={S.container}>
-      <div className={S.authBox}>{children}</div>
+    <div className="flex justify-center items-center w-full h-screen bg-gradient-to-b from-blue-400 to-pink-300">
+      {children}
     </div>
   );
 }

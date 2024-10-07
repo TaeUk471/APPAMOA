@@ -20,22 +20,21 @@
   "plugins": ["react", "@typescript-eslint", "import"],
   "ignorePatterns": ["build/"],
   "rules": {
-  "import/order": [
-  "error",
-  {
-    "groups": [
-      ["type"],
-      ["builtin"],    
-      ["external"],     
-      ["internal"],     
-      ["parent", "sibling", "index"], 
-      ["object", "unknown"]
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["type"],
+          ["builtin"],
+          ["external"],
+          ["internal"],
+          ["parent", "sibling", "index"],
+          ["object", "unknown"]
+        ],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
     ],
-    "newlines-between": "always", 
-    "alphabetize": { "order": "asc", "caseInsensitive": true } 
-  }
-]
-,
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "semi": ["error", "always"],
     "quotes": ["error", "double"],

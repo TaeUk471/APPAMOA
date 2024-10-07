@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1;
+  font-size: 1.6rem;
+  font-family: "DMSans", "Inter", sans-serif;
+  background-color: #fafafa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000000;
+}
+
+a {
+  color: #76a5ea;
+  text-decoration: none;
+}
+
+button,
+textarea {
+  all: unset;
+}
