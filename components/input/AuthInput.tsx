@@ -17,52 +17,46 @@ export default function AuthInput({ label, name, type, placeholder, value, onCha
   const toast = useRef<Toast>(null);
   const [inputValue, setInputValue] = useState(value);
 
+  const showToast = (summary: string, detail: string) => {
+    if (toast.current) {
+      toast.current.clear();
+      toast.current.show({
+        severity: "error",
+        summary,
+        detail,
+        life: 2500,
+      });
+    }
+  };
+
   const validateInput = (value: string) => {
     if (type === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(value)) {
         setError("유효한 이메일을 입력해주세요.");
-        if (toast.current) {
-          toast.current.show({
-            severity: "error",
-            summary: "이메일 오류",
-            detail: error,
-            life: 3000,
-          });
-        }
+        showToast("이메일 오류", error);
         return;
       }
     }
     if (type === "password") {
       if (value.length < 8) {
         setError("비밀번호는 8자 이상 입력해주세요.");
-        if (toast.current) {
-          toast.current.show({
-            severity: "error",
-            summary: "비밀번호 오류",
-            detail: error,
-            life: 3000,
-          });
-        }
+        showToast("비밀번호 오류", error);
         return;
       }
     }
     setError("");
   };
 
-  // Debounce 적용
-  const handleDebouncedChange = (newValue: string) => {
-    setInputValue(newValue);
-    const timer = setTimeout(() => {
-      validateInput(newValue);
-      onChange(newValue);
-    }, 3000);
-    return () => clearTimeout(timer);
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    handleDebouncedChange(newValue);
+    setInputValue(newValue);
+    onChange(newValue);
+  };
+
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    validateInput(newValue);
   };
 
   return (
@@ -77,6 +71,7 @@ export default function AuthInput({ label, name, type, placeholder, value, onCha
           placeholder={placeholder}
           value={inputValue}
           onChange={handleChange}
+          onBlur={handleBlur}
           className="w-full px-3 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
