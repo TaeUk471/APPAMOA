@@ -1,6 +1,5 @@
 import { nextui } from "@nextui-org/react";
 import aspectRatio from "@tailwindcss/aspect-ratio";
-
 export default {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
