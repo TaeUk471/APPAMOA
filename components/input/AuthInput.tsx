@@ -1,5 +1,5 @@
 import { Toast } from "primereact/toast";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 
@@ -36,16 +36,22 @@ export default function AuthInput({ label, name, type, placeholder, value, onCha
   };
 
   const validateInput = (value: string) => {
+    // setError("");
     if (type === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      console.log(error);
       if (!emailRegex.test(value)) {
-        setError("유효한 이메일을 입력해주세요.");
+        const errorMessage = "유효한 이메일을 입력해주세요.";
+        setError(errorMessage);
+        showToast("오류", errorMessage);
         return;
       }
     }
     if (type === "password") {
       if (value.length < 8) {
-        setError("비밀번호는 8자 이상 입력해주세요.");
+        const errorMessage = "비밀번호는 8자 이상 입력해주세요.";
+        setError(errorMessage);
+        showToast("오류", errorMessage);
         return;
       }
     }
@@ -78,7 +84,7 @@ export default function AuthInput({ label, name, type, placeholder, value, onCha
           value={inputValue}
           onChange={handleChange}
           onBlur={handleBlur}
-          className="w-full px-4 py-3 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+          className="w-full px-4 py-3 border border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-pink-400 focus:shadow-pink-400 focus:shadow-sm"
         />
       </div>
     </>

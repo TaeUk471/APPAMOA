@@ -20,8 +20,8 @@ export default function SignInForm() {
     <div className="flex flex-col items-center justify-center h-screen">
       <form
         onSubmit={handleSignIn}
-        className="flex flex-col w-[300px] h-fit gap-6 p-2 border bg-white border-gray-300 rounded-xl shadow-md">
-        <Link href="/" className="flex justify-center">
+        className="flex flex-col w-[300px] h-fit gap-6 px-6 py-3 border bg-white border-gray-300 rounded-xl shadow-md">
+        <Link href="/" className="flex justify-center mb-3">
           <Image src="/images/APPAMOA.png" width={220} height={220} alt="아파모아" />
         </Link>
         <AuthInput
