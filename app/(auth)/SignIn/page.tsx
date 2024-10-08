@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 import AuthInput from "@components/input/AuthInput";
@@ -18,8 +20,10 @@ export default function SignInForm() {
     <div className="flex flex-col items-center justify-center h-screen">
       <form
         onSubmit={handleSignIn}
-        className="flex flex-col gap-6 p-8 border border-gray-300 rounded-md shadow-md w-96">
-        <h1 className="text-2xl font-semibold text-center mb-4">로그인</h1>
+        className="flex flex-col w-[300px] h-fit gap-6 p-2 border bg-white border-gray-300 rounded-xl shadow-md">
+        <Link href="/" className="flex justify-center">
+          <Image src="/images/APPAMOA.png" width={220} height={220} alt="아파모아" />
+        </Link>
         <AuthInput
           label="이메일"
           name="email"
@@ -38,7 +42,7 @@ export default function SignInForm() {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+          className="bg-pink-500 text-white flex justify-center py-5 mt-2 mb-2 px-4 rounded-md hover:bg-pink-700 transition-colors">
           로그인
         </button>
       </form>
