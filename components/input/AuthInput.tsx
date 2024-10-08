@@ -1,16 +1,9 @@
 import { Toast } from "primereact/toast";
 import { useState, useRef, useEffect } from "react";
+
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
-
-interface AuthInputProps {
-  label: string;
-  name: string;
-  type: "email" | "password" | "text";
-  placeholder: string;
-  value: string;
-  onChange: (value: string) => void;
-}
+import { AuthInputProps } from "constant/AuthProps";
 
 export default function AuthInput({ label, name, type, placeholder, value, onChange }: AuthInputProps) {
   const [error, setError] = useState("");

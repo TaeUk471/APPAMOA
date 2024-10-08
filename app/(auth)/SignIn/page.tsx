@@ -5,10 +5,29 @@ import Link from "next/link";
 import { useState } from "react";
 
 import AuthInput from "@components/input/AuthInput";
+import { AuthInputProps } from "constant/AuthProps";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const emailProps: AuthInputProps = {
+    label: "이메일",
+    name: "email",
+    type: "email",
+    placeholder: "이메일을 입력하세요",
+    value: email,
+    onChange: setEmail,
+  };
+
+  const passwordProps: AuthInputProps = {
+    label: "비밀번호",
+    name: "password",
+    type: "password",
+    placeholder: "비밀번호를 입력하세요",
+    value: password,
+    onChange: setPassword,
+  };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,22 +43,8 @@ export default function SignInForm() {
         <Link href="/" className="flex justify-center mb-3">
           <Image src="/images/APPAMOA.png" width={220} height={220} alt="아파모아" />
         </Link>
-        <AuthInput
-          label="이메일"
-          name="email"
-          type="email"
-          placeholder="이메일을 입력하세요"
-          value={email}
-          onChange={setEmail}
-        />
-        <AuthInput
-          label="비밀번호"
-          name="password"
-          type="password"
-          placeholder="비밀번호를 입력하세요"
-          value={password}
-          onChange={setPassword}
-        />
+        <AuthInput {...emailProps} />
+        <AuthInput {...passwordProps} />
         <button
           type="submit"
           className="bg-pink-500 text-white flex justify-center py-5 mt-2 mb-2 px-4 rounded-md hover:bg-pink-700 transition-colors">
