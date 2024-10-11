@@ -1,7 +1,11 @@
-export default function GNB() {
+export default function GNB({ isEdit }: { isEdit: boolean }) {
   return (
     <>
-      <div className="bg-blue-500 h-[70px]">GNB</div>
+      {isEdit ? (
+        <div className="bg-blue-500 h-[70px]">editing GNB</div>
+      ) : (
+        <div className="bg-blue-500 h-[70px]">not editing GNB</div>
+      )}
     </>
   );
 }
