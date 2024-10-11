@@ -1,6 +1,12 @@
+"use client";
+
 import usePaginationStore from "store/usePaginationStore";
 
-export default function Pagination(pageId: string) {
+interface PaginationProps {
+  pageId: string;
+}
+
+export default function Pagination({ pageId }: PaginationProps) {
   const currentPage = usePaginationStore(state => state.currentPage[pageId] || 1);
   const setPage = usePaginationStore(state => state.setCurrentPage);
   const increase = usePaginationStore(state => state.increaseTotalPage);
@@ -11,7 +17,7 @@ export default function Pagination(pageId: string) {
   const range = 2; // 화면 앞뒤로 보여줄 범위
 
   const handlePage = (newPage: number) => {
-    if (newPage > 0 && newPage <= totalPage) {
+    if (newPage > 0 && newPage <= totalPage && newPage !== currentPage) {
       setPage(pageId, newPage);
     }
   };
