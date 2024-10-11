@@ -9,7 +9,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -24,15 +25,17 @@
       {
         "groups": [
           ["type"],
-          ["builtin", "external"],
-          ["internal", "parent", "sibling", "index"],
+          ["builtin"],
+          ["external"],
+          ["internal"],
+          ["parent", "sibling", "index"],
           ["object", "unknown"]
         ],
         "newlines-between": "always",
         "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ],
-    "@typescript-eslint/no-explicit-any": 0,
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
     "react/prop-types": "off",
