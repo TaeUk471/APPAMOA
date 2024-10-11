@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <div />
+      <div className="bg-red-400 h-[60px]">Footer</div>
     </>
   );
 }
