@@ -42,14 +42,14 @@ textarea {
   }
 
   .nav-item {
-    @apply flex items-center text-white mb-4; 
+    @apply flex items-center text-white mb-4;
   }
 
   .nav-item-icon {
-    @apply min-w-[3rem] text-center; 
+    @apply min-w-[3rem] text-center;
   }
 
   .space-y-6 {
-    @apply space-y-6; 
+    @apply space-y-6;
   }
 }
