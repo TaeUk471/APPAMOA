@@ -14,7 +14,7 @@ export default function Pagination({ pageId }: PaginationProps) {
   const totalPage = usePaginationStore(state => state.totalPage);
 
   const pageList = []; // 화면에 렌더링할 페이지 리스트
-  const range = 2; // 화면 앞뒤로 보여줄 범위
+  const range = 1; // 화면 앞뒤로 보여줄 범위
 
   const handlePage = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPage && newPage !== currentPage) {
@@ -31,38 +31,46 @@ export default function Pagination({ pageId }: PaginationProps) {
   }
 
   return (
-    <nav>
-      <ul className="flex gap-2 mt-3">
-        <button className="px-4 py-4 border rounded-lg" onClick={() => decrease()}>
-          {"-"}
-        </button>
+    <nav className="flex w-[450px] items-center justify-between gap-4">
+      <button
+        className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg"
+        onClick={() => decrease()}>
+        {"-"}
+      </button>
+      <ul className="flex gap-2 justify-between w-[360px]">
         <button
-          className="px-4 py-4 border rounded-lg disabled:opacity-50"
+          className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg disabled:opacity-50"
           disabled={currentPage === 1}
           onClick={() => handlePage(currentPage - 1)}>
-          {"<"}
+          &laquo;
         </button>
-        {pageList.map((page, index) => (
-          <li key={index} className={`text-lg ${page === currentPage ? "text-blue-400" : ""}`}>
-            {typeof page === "number" ? (
-              <button onClick={() => handlePage(page)} className="px-4 py-2">
-                {page}
-              </button>
-            ) : (
-              <span className="px-4 py-2">{page}</span>
-            )}
-          </li>
-        ))}
+        <div className="flex gap-2">
+          {pageList.map((page, index) => (
+            <li key={index} className={`text-lg font-black  text- ${page === currentPage ? "text-blue-600" : ""}`}>
+              {typeof page === "number" ? (
+                <button
+                  onClick={() => handlePage(page)}
+                  className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg">
+                  {page}
+                </button>
+              ) : (
+                <span className="flex px-4 py-2 text-center">{page}</span>
+              )}
+            </li>
+          ))}
+        </div>{" "}
         <button
-          className="px-4 py-4 border rounded-lg disabled:opacity-50"
+          className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg disabled:opacity-50"
           disabled={currentPage === totalPage}
           onClick={() => handlePage(currentPage + 1)}>
-          {">"}
-        </button>
-        <button className="px-4 py-4 border rounded-lg" onClick={() => increase()}>
-          {"+"}
+          &raquo;
         </button>
       </ul>
+      <button
+        className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg"
+        onClick={() => increase()}>
+        {"+"}
+      </button>
     </nav>
   );
 }

@@ -10,7 +10,7 @@ interface PaginationState {
   setCurrentPage: (pageId: string, currentPage: number) => void;
 }
 
-const useAppStore = create<PaginationState>(set => ({
+const usePaginationStore = create<PaginationState>(set => ({
   totalPage: 1,
   currentPage: {},
   setTotalPage: totalPage => set({ totalPage }),
@@ -25,4 +25,4 @@ const useAppStore = create<PaginationState>(set => ({
     })),
 }));
 
-export default useAppStore;
+export default usePaginationStore;
