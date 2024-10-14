@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/react";
 import aspectRatio from "@tailwindcss/aspect-ratio";
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   content: [
@@ -36,6 +37,12 @@ export default {
       },
       height: {
         "75vh": "75vh",
+      },
+      scale: {
+        97: "0.97",
+      },
+      boxShadow: {
+        hover: "0 4px 8px rgba(0, 0, 0, 0.2)",
       },
     },
   },

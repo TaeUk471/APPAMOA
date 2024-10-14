@@ -31,3 +31,13 @@ button,
 textarea {
   all: unset;
 }
+
+@layer components {
+  .btn-common {
+    @apply w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg transition-transform duration-300 ease-in-out;
+  }
+
+  .btn-hover:hover {
+    @apply transform scale-97 shadow-lg;
+  }
+}

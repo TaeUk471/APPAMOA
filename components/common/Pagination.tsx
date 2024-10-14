@@ -32,14 +32,12 @@ export default function Pagination({ pageId }: PaginationProps) {
 
   return (
     <nav className="flex w-[450px] items-center justify-between gap-4">
-      <button
-        className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg"
-        onClick={() => decrease()}>
+      <button className="btn-common btn-hover" onClick={() => decrease()}>
         {"-"}
       </button>
       <ul className="flex gap-2 justify-between w-[360px]">
         <button
-          className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg disabled:opacity-50"
+          className="btn-common btn-hover disabled:opacity-50"
           disabled={currentPage === 1}
           onClick={() => handlePage(currentPage - 1)}>
           &laquo;
@@ -48,9 +46,7 @@ export default function Pagination({ pageId }: PaginationProps) {
           {pageList.map((page, index) => (
             <li key={index} className={`text-lg font-black  text- ${page === currentPage ? "text-blue-600" : ""}`}>
               {typeof page === "number" ? (
-                <button
-                  onClick={() => handlePage(page)}
-                  className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg">
+                <button onClick={() => handlePage(page)} className="btn-common btn-hover">
                   {page}
                 </button>
               ) : (
@@ -58,17 +54,15 @@ export default function Pagination({ pageId }: PaginationProps) {
               )}
             </li>
           ))}
-        </div>{" "}
+        </div>
         <button
-          className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg disabled:opacity-50"
+          className="btn-common btn-hover disabled:opacity-50"
           disabled={currentPage === totalPage}
           onClick={() => handlePage(currentPage + 1)}>
           &raquo;
         </button>
       </ul>
-      <button
-        className="w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-lg"
-        onClick={() => increase()}>
+      <button className="btn-common btn-hover" onClick={() => increase()}>
         {"+"}
       </button>
     </nav>
