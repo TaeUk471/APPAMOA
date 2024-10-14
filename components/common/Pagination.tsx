@@ -44,7 +44,7 @@ export default function Pagination({ pageId }: PaginationProps) {
         </button>
         <div className="flex gap-2">
           {pageList.map((page, index) => (
-            <li key={index} className={`text-lg font-black  text- ${page === currentPage ? "text-blue-600" : ""}`}>
+            <li key={index} className={`text-lg font-black ${page === currentPage ? "text-orange-800" : ""}`}>
               {typeof page === "number" ? (
                 <button onClick={() => handlePage(page)} className="btn-common btn-hover">
                   {page}
