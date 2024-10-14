@@ -44,6 +44,9 @@ export default {
       boxShadow: {
         hover: "0 4px 8px rgba(0, 0, 0, 0.2)",
       },
+      spacing: {
+        6: "1.5rem",
+      },
     },
   },
   plugins: [
