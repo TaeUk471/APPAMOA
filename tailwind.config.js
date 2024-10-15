@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/react";
 import aspectRatio from "@tailwindcss/aspect-ratio";
+import tailwindScrollbar from "tailwind-scrollbar";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -52,6 +53,7 @@ export default {
     },
   },
   plugins: [
+    tailwindScrollbar,
     aspectRatio,
     nextui({
       layout: {

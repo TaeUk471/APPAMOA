@@ -25,26 +25,18 @@ const Sidebar = () => {
               />
             </button>
           )}
-
           {/* 두 번째 버튼 */}
           <button onClick={toggleSidebar} className="cursor-pointer flex items-center justify-center h-8">
             {isSidebarOpen ? <i className="fas fa-bars text-white" /> : <i className="fas fa-times text-white" />}
           </button>
         </div>
-
         {!isSidebarOpen && (
-          <div className={"flex-1 p-4 overflow-y-auto"}>
+          <div
+            className={"flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-200"}>
             {/* Sidebar Content */}
-            {isImageOpen ? (
-              // 2열 병원 로고와 상호 표시
-              <HospitalGrid />
-            ) : (
-              // 기본 Sidebar Content
-              <p className="text-white">Input Elements</p>
-            )}
+            {isImageOpen ? <HospitalGrid /> : <p className="text-white">Input Elements (조작용)</p>}
           </div>
         )}
-
         {/* Footer */}
         {!isSidebarOpen && (
           <div className="flex gap-4 p-4 bg-blue-500 text-white">
