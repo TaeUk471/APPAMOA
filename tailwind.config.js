@@ -17,6 +17,7 @@ export default {
       colors: {
         black: "#1B1B1B",
         "gray-80": "#4B4B4B",
+        "gray-75": "#535b60",
         "gray-70": "#79747E",
         "gray-60": "#A4A1AA",
         "gray-50": "#ADAEB8",
