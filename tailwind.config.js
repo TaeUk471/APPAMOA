@@ -43,6 +43,7 @@ export default {
       },
       boxShadow: {
         hover: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        innerShadow: "inset 4px 4px 10px rgba(0, 0, 0, 0.5)",
       },
       spacing: {
         6: "1.5rem",
