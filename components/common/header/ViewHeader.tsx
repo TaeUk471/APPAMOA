@@ -11,7 +11,7 @@ const EditHeader = () => {
         <div className="flex gap-6">
           <div className="border-2 border-black p-3 bg-white rounded-md">로고</div>
           <button className="border-2 border-black p-3 bg-white rounded-md" onClick={setIsEdit}>
-            편집 종료 버튼
+            편집 버튼
           </button>
         </div>
         <Pagination pageId="edit" />
