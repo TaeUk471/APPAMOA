@@ -1,5 +1,7 @@
 import { nextui } from "@nextui-org/react";
 import aspectRatio from "@tailwindcss/aspect-ratio";
+import tailwindScrollbar from "tailwind-scrollbar";
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   content: [
@@ -16,6 +18,7 @@ export default {
       colors: {
         black: "#1B1B1B",
         "gray-80": "#4B4B4B",
+        "gray-75": "#535b60",
         "gray-70": "#79747E",
         "gray-60": "#A4A1AA",
         "gray-50": "#ADAEB8",
@@ -37,9 +40,20 @@ export default {
       height: {
         "75vh": "75vh",
       },
+      scale: {
+        97: "0.97",
+      },
+      boxShadow: {
+        hover: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        innerShadow: "inset 4px 4px 10px rgba(0, 0, 0, 0.5)",
+      },
+      spacing: {
+        6: "1.5rem",
+      },
     },
   },
   plugins: [
+    tailwindScrollbar,
     aspectRatio,
     nextui({
       layout: {

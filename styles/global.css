@@ -31,3 +31,25 @@ button,
 textarea {
   all: unset;
 }
+
+@layer components {
+  .btn-common {
+    @apply w-[36px] h-[36px] text-center border bg-white cursor-pointer rounded-3xl transition-transform duration-300 ease-in-out;
+  }
+
+  .btn-hover:hover {
+    @apply transform scale-97 shadow-lg;
+  }
+
+  .nav-item {
+    @apply flex items-center text-white mb-4;
+  }
+
+  .nav-item-icon {
+    @apply min-w-[3rem] text-center;
+  }
+
+  .space-y-6 {
+    @apply space-y-6;
+  }
+}
