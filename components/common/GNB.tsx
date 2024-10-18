@@ -1,3 +1,5 @@
+"use client";
+
 import useEditStore from "store/useEditStore";
 
 import EditHeader from "./header/EditHeader";
