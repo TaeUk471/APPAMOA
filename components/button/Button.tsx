@@ -1,3 +1,5 @@
+import { buttonColor, ButtonColorType, buttonSize, ButtonSizeType } from "types/button";
+
 interface ButtonProps {
   size: ButtonSizeType;
   color: ButtonColorType;
@@ -8,7 +10,7 @@ interface ButtonProps {
 
 export default function Button({ size, color, isLoading, children, onClick, ...rest }: ButtonProps) {
   const sizeClass = buttonSize[size];
-  const colorClass = buttonClass[color];
+  const colorClass = buttonColor[color];
 
   return (
     <>
