@@ -9,7 +9,7 @@ import InputSidebar from "@components/common/sidebar/InputSidebar";
 export default function EditLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <GNB isEdit={true} />
+      <GNB />
       <div className="flex flex-1">
         <div className="flex-1">{children}</div>
         <ElementSidebar />
