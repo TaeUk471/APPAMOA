@@ -1,23 +1,29 @@
+import Button from "@components/button/Button";
 import useEditStore from "store/useEditStore";
 
 import Pagination from "../Pagination";
 
 const EditHeader = () => {
   const setIsEdit = useEditStore(state => state.setIsEdit);
+  console.log(setIsEdit);
 
   return (
     <>
-      <div className="flex items-center justify-between h-[70px] bg-white shadow-md p-4 border-t-4 border-purple-700">
+      <div className="flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800">
         <div className="flex gap-6">
-          <div className="border-2 border-black p-3 bg-white rounded-md">로고</div>
-          <button className="border-2 border-black p-3 bg-white rounded-md" onClick={setIsEdit}>
-            편집 버튼
-          </button>
+          <div className="border-2 border-black p-3 rounded-md">로고</div>
+          <Button size={"s"} color={"primary"} isLoading={false}>
+            편집 기능
+          </Button>
         </div>
         <Pagination pageId="edit" />
         <div className="flex gap-6">
-          <div className="border-2 border-black p-3 bg-white rounded-md">미리보기</div>
-          <div className="border-2 border-black p-3 bg-white rounded-md">pdf 출력하기</div>
+          <Button size={"s"} color={"primary"} isLoading={false}>
+            미리보기
+          </Button>
+          <Button size={"s"} color={"primary"} isLoading={false}>
+            pdf 출력하기
+          </Button>
         </div>
       </div>
     </>

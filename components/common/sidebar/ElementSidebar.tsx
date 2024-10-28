@@ -3,7 +3,7 @@
 import useToggle from "@hooks/useToggle";
 
 import HospitalGrid from "../hospital/HospitalGrid";
-import UploadImage from "./elementSIdebar/UploadImage";
+import UploadImage from "./ElementSIdebar/UploadImage";
 
 const ElementSidebar = () => {
   const { isOpen: isSidebarOpen, toggle: toggleSidebar } = useToggle(); // 사이드바용 토글 상태

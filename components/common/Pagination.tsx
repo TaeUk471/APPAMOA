@@ -46,7 +46,7 @@ export default function Pagination({ pageId }: PaginationProps) {
           {pageList.map((page, index) => (
             <li key={index} className={`text-lg font-black ${page === currentPage ? "text-orange-800" : ""}`}>
               {typeof page === "number" ? (
-                <button onClick={() => handlePage(page)} className="btn-common btn-hover">
+                <button onClick={() => handlePage(page)} className="btn-common btn-hover shadow-md">
                   {page}
                 </button>
               ) : (
