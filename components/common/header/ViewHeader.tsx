@@ -1,11 +1,14 @@
 import Button from "@components/button/Button";
 import useEditStore from "store/useEditStore";
+import useExportPDFStore from "store/useExportPDFStore";
 
 import Pagination from "../Pagination";
 
 const EditHeader = () => {
   const setIsEdit = useEditStore(state => state.setIsEdit);
   console.log(setIsEdit);
+
+  const handleExportPDF = useExportPDFStore(state => state.handleExportPDF);
 
   return (
     <>
@@ -21,7 +24,7 @@ const EditHeader = () => {
           <Button size={"s"} color={"primary"} isLoading={false}>
             미리보기
           </Button>
-          <Button size={"s"} color={"primary"} isLoading={false}>
+          <Button size={"s"} color={"primary"} isLoading={false} onClick={() => handleExportPDF(1)}>
             pdf 출력하기
           </Button>
         </div>
