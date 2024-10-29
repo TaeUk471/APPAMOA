@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import usePaginationStore from "store/usePaginationStore";
 
 interface PaginationProps {
@@ -29,6 +31,12 @@ export default function Pagination({ pageId }: PaginationProps) {
       pageList.push("...");
     }
   }
+
+  useEffect(() => {
+    console.log("Current Page State:", currentPage);
+    console.log("Complete currentPage object:", usePaginationStore.getState());
+    console.log("currentPage object:", usePaginationStore.getState().currentPage);
+  }, [currentPage]);
 
   return (
     <nav className="flex w-[450px] items-center justify-between gap-4">

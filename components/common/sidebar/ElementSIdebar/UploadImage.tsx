@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import useImageStore from "store/useImageStore";
 
 const UploadImage = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const addImageUrl = useImageStore(state => state.AddImageUrls);
+  // ImageSet 초기화 시켜줄 때 사용!
+  // const resetImageUrl = useImageStore(state => state.ResetImageUrl);
+  const qimageUrl = useImageStore(state => state.imageUrls);
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   const doUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +19,6 @@ const UploadImage = () => {
         if (file.type.startsWith("image/")) {
           const imageUrl = URL.createObjectURL(file);
           addImageUrl(imageUrl);
-          console.log(imageUrl);
         } else {
           alert("이미지 파일만 선택할 수 있습니다.");
         }
@@ -26,6 +28,10 @@ const UploadImage = () => {
       setIsUploading(false);
     }
   };
+
+  useEffect(() => {
+    console.log(qimageUrl);
+  }, [qimageUrl]);
 
   const handleButtonClick = () => {
     setIsUploading(true);
@@ -38,7 +44,7 @@ const UploadImage = () => {
         <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={doUpload} multiple />
         <button className="bg-white" onClick={handleButtonClick}>
           <i
-            className={`fa fa-image cursor-pointer p-4 bg-pink-300 rounded-lg ${isUploading ? "shadow-innerShadow" : ""}`}
+            className={`fa fa-image cursor-pointer p-4 bg-pink-300 rounded-r-lg  ${isUploading ? "shadow-innerShadow" : ""}`}
           />
         </button>
       </div>

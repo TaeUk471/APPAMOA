@@ -12,7 +12,7 @@ const EditHeader = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800">
+      <div className="flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-red-100">
         <div className="flex gap-6">
           <div className="border-2 border-black p-3 rounded-md">로고</div>
           <Button size={"s"} color={"primary"} isLoading={false}>

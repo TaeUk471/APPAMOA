@@ -1,15 +1,33 @@
+// useImageStore.ts
 import { create } from "zustand";
 
+interface ImageData {
+  id: string;
+  url: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 interface ImageStoreProps {
-  imageUrls: string[];
-  AddImageUrls: (newImageUrl: string) => void;
+  images: ImageData[];
+  setImages: (images: ImageData[]) => void;
+  updateImagePosition: (id: string, x: number, y: number) => void;
+  updateImageSize: (id: string, width: number, height: number) => void;
 }
 
 const useImageStore = create<ImageStoreProps>(set => ({
-  imageUrls: [],
-  AddImageUrls: newImageUrl =>
+  images: [],
+  setImages: images => set({ images }),
+  updateImagePosition: (id, x, y) =>
     set(state => ({
-      imageUrls: [...state.imageUrls, newImageUrl],
+      images: state.images.map(img => (img.id === id ? { ...img, x, y } : img)),
+    })),
+  updateImageSize: (id, width, height) =>
+    set(state => ({
+      images: state.images.map(img => (img.id === id ? { ...img, width, height } : img)),
     })),
 }));
+
 export default useImageStore;
