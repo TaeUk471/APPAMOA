@@ -12,7 +12,7 @@ import {
   TextareaComponentData,
 } from "types/componenttype";
 
-interface PaginationStore {
+interface PageDataStore {
   pages: { [key: string]: PageData };
   addImageComponent: (pageId: string, url: string) => void;
   addDivComponent: (pageId: string, color: string) => void;
@@ -27,7 +27,7 @@ interface PaginationStore {
   ) => void;
 }
 
-const usePaginationStore = create<PaginationStore>(set => ({
+export const usePageDataStore = create<PageDataStore>(set => ({
   pages: initialPageData,
 
   addImageComponent: (pageId, url) => {
@@ -150,4 +150,4 @@ const usePaginationStore = create<PaginationStore>(set => ({
   },
 }));
 
-export default usePaginationStore;
+export default usePageDataStore;

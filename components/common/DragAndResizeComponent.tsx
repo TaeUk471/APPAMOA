@@ -43,14 +43,20 @@ const DraggableResizableComponent = ({ data, componentType, pageId }: DraggableR
     drop: () => ({ id, pageId, componentType }),
   });
 
-  const handleResize = (e: unknown, { size }: ResizeCallbackData) => {
+  const handleResize = (e: React.SyntheticEvent, { size }: ResizeCallbackData) => {
+    e.stopPropagation(); // Prevents drag event on resize
+    updateComponent(pageId, componentType, id, { width: size.width, height: size.height });
+  };
+
+  const handleResizeStop = (e: React.SyntheticEvent, { size }: ResizeCallbackData) => {
+    e.stopPropagation();
     updateComponent(pageId, componentType, id, { width: size.width, height: size.height });
   };
 
   drag(drop(containerRef));
 
   return (
-    <Resizable width={width} height={height} onResize={handleResize}>
+    <Resizable width={width} height={height} onResize={handleResize} onResizeStop={handleResizeStop}>
       <div
         ref={containerRef}
         style={{

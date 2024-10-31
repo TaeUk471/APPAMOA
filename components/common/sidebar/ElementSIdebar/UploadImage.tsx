@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+"use client";
 
-import useImageStore from "store/useImageStore";
+import React, { useRef, useState } from "react";
+
+import usePageDataStore from "store/usePageDataStore";
 
 const UploadImage = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const addImageUrl = useImageStore(state => state.AddImageUrls);
-  // ImageSet 초기화 시켜줄 때 사용!
-  // const resetImageUrl = useImageStore(state => state.ResetImageUrl);
-  const qimageUrl = useImageStore(state => state.imageUrls);
+  const handleUploadImage = usePageDataStore(state => state.addImageComponent);
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
   const doUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +17,7 @@ const UploadImage = () => {
         const file = files[i];
         if (file.type.startsWith("image/")) {
           const imageUrl = URL.createObjectURL(file);
-          addImageUrl(imageUrl);
+          handleUploadImage("page1", imageUrl); // 추후에 변경해야함 pagination과 연결 해야함!.
         } else {
           alert("이미지 파일만 선택할 수 있습니다.");
         }
@@ -28,10 +27,6 @@ const UploadImage = () => {
       setIsUploading(false);
     }
   };
-
-  useEffect(() => {
-    console.log(qimageUrl);
-  }, [qimageUrl]);
 
   const handleButtonClick = () => {
     setIsUploading(true);

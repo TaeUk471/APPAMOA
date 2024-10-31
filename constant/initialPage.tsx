@@ -5,10 +5,10 @@ import { PageData } from "types/componenttype";
 export const initialPageData: { [key: string]: PageData } = {
   page1: {
     imageSet: [
-      { id: uuidv4(), x: 0, y: 0, width: 200, height: 100, url: "path/to/image1.jpg" },
-      { id: uuidv4(), x: 150, y: 100, width: 120, height: 120, url: "path/to/image2.jpg" },
+      { id: uuidv4(), x: 0, y: 0, width: 200, height: 100, url: "/images/고먐미.jpeg" },
+      { id: uuidv4(), x: 150, y: 100, width: 120, height: 120, url: "/images/고먐미.jpeg" },
     ],
-    divSet: [{ id: uuidv4(), x: 100, y: 100, width: 150, height: 150, color: "red" }],
+    divSet: [{ id: uuidv4(), x: 100, y: 100, width: 150, height: 150, color: "black" }],
     tableSet: [
       {
         id: uuidv4(),
@@ -20,7 +20,7 @@ export const initialPageData: { [key: string]: PageData } = {
           {
             row: 1,
             cells: [
-              { col: 1, content: "Cell 1-1" },
+              { col: 1, content: "하 참" },
               { col: 2, content: "Cell 1-2" },
               { col: 3, content: "Cell 1-3" },
             ],
@@ -49,7 +49,7 @@ export const initialPageData: { [key: string]: PageData } = {
     textareaSet: [
       {
         id: uuidv4(),
-        x: 50,
+        x: 400,
         y: 50,
         width: 250,
         height: 100,
