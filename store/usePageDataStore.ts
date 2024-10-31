@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { create } from "zustand";
 
-import { initialPageData } from "constant/InitialPage";
+import { initialPageData } from "constant/initialPage";
 import {
   DivComponentData,
   ImageComponentData,
@@ -9,7 +9,7 @@ import {
   RowData,
   TableComponentData,
   TextareaComponentData,
-} from "types/pagetype";
+} from "types/componenttype";
 
 interface PaginationStore {
   pages: { [key: string]: PageData };

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { PageData } from "types/pagetype";
+import { PageData } from "types/componenttype";
 
 export const initialPageData: { [key: string]: PageData } = {
   page1: {
@@ -42,8 +42,8 @@ export const initialPageData: { [key: string]: PageData } = {
             ],
           },
         ],
-        rows: 0,
-        columns: 0,
+        rows: 3,
+        columns: 3,
       },
     ],
     textareaSet: [
