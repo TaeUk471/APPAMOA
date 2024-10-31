@@ -6,6 +6,7 @@ import {
   DivComponentData,
   ImageComponentData,
   PageData,
+  RowData,
   TableComponentData,
   TextareaComponentData,
 } from "types/pagetype";
@@ -14,8 +15,8 @@ interface PaginationStore {
   pages: { [key: string]: PageData };
   addImageComponent: (pageId: string, url: string) => void;
   addDivComponent: (pageId: string, color: string) => void;
-  addTableComponent: (pageId: string, rows: number, columns: number) => void;
-  addTextareaComponent: (pageId: string, placeholder: string, underline: boolean) => void;
+  addTableComponent: (pageId: string, rows: number, columns: number, data: RowData[]) => void;
+  addTextareaComponent: (pageId: string, placeholder: string, underline: boolean, content: string) => void;
   deleteComponent: (pageId: string, componentType: keyof PageData, componentId: string) => void;
 }
 
@@ -62,7 +63,7 @@ const usePaginationStore = create<PaginationStore>(set => ({
     }));
   },
 
-  addTableComponent: (pageId, rows, columns) => {
+  addTableComponent: (pageId, rows, columns, data) => {
     const newTable: TableComponentData = {
       id: uuidv4(),
       x: 100,
@@ -71,7 +72,17 @@ const usePaginationStore = create<PaginationStore>(set => ({
       height: 200,
       rows,
       columns,
+      data:
+        data ||
+        Array.from({ length: rows }, (_, rowIndex) => ({
+          row: rowIndex + 1,
+          cells: Array.from({ length: columns }, (_, colIndex) => ({
+            col: colIndex + 1,
+            content: `Cell ${rowIndex + 1}-${colIndex + 1}`,
+          })),
+        })),
     };
+
     set(state => ({
       pages: {
         ...state.pages,
@@ -83,7 +94,7 @@ const usePaginationStore = create<PaginationStore>(set => ({
     }));
   },
 
-  addTextareaComponent: (pageId, placeholder, underline) => {
+  addTextareaComponent: (pageId, placeholder, underline, content) => {
     const newTextarea: TextareaComponentData = {
       id: uuidv4(),
       x: 150,
@@ -92,6 +103,7 @@ const usePaginationStore = create<PaginationStore>(set => ({
       height: 100,
       placeholder,
       underline,
+      content,
     };
     set(state => ({
       pages: {

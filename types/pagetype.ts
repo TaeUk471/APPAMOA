@@ -17,11 +17,23 @@ export interface DivComponentData extends BaseComponentData {
 export interface TableComponentData extends BaseComponentData {
   rows: number;
   columns: number;
+  data: RowData[];
+}
+
+interface CellData {
+  col: number;
+  content: string;
+}
+
+export interface RowData {
+  row: number;
+  cells: CellData[];
 }
 
 export interface TextareaComponentData extends BaseComponentData {
   placeholder: string;
   underline: boolean;
+  content: string;
 }
 
 export interface PageData {
