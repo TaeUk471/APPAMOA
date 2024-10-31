@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 import { initialPageData } from "constant/initialPage";
 import {
+  BaseComponentData,
   DivComponentData,
   ImageComponentData,
   PageData,
@@ -18,6 +19,12 @@ interface PaginationStore {
   addTableComponent: (pageId: string, rows: number, columns: number, data: RowData[]) => void;
   addTextareaComponent: (pageId: string, placeholder: string, underline: boolean, content: string) => void;
   deleteComponent: (pageId: string, componentType: keyof PageData, componentId: string) => void;
+  updateComponent: (
+    pageId: string,
+    componentType: keyof PageData,
+    componentId: string,
+    updates: Partial<BaseComponentData>
+  ) => void;
 }
 
 const usePaginationStore = create<PaginationStore>(set => ({
@@ -123,6 +130,20 @@ const usePaginationStore = create<PaginationStore>(set => ({
         [pageId]: {
           ...state.pages[pageId],
           [componentType]: state.pages[pageId][componentType].filter(component => component.id !== componentId),
+        },
+      },
+    }));
+  },
+
+  updateComponent: (pageId, componentType, componentId, updates) => {
+    set(state => ({
+      pages: {
+        ...state.pages,
+        [pageId]: {
+          ...state.pages[pageId],
+          [componentType]: state.pages[pageId][componentType].map(component =>
+            component.id === componentId ? { ...component, ...updates } : component
+          ),
         },
       },
     }));
