@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@components/button/Button";
 import useEditStore from "store/useEditStore";
 import useExportPDFStore from "store/useExportPDFStore";

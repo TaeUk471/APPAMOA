@@ -27,7 +27,7 @@ interface PageDataStore {
   ) => void;
 }
 
-export const usePageDataStore = create<PageDataStore>(set => ({
+const usePageDataStore = create<PageDataStore>(set => ({
   pages: initialPageData,
 
   addImageComponent: (pageId, url) => {

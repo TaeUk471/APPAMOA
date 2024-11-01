@@ -37,7 +37,7 @@ const UploadImage = () => {
     <div className={"bg-purple-900 fixed top-25 left-0 transition-all w-14 h-fit top-[80px] flex flex-col"}>
       <div className={"flex justify-between items-center"}>
         <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={doUpload} multiple />
-        <button className="bg-white" onClick={handleButtonClick}>
+        <button className="bg-slate-300" onClick={handleButtonClick}>
           <i
             className={`fa fa-image cursor-pointer p-4 bg-pink-300 rounded-r-lg  ${isUploading ? "shadow-innerShadow" : ""}`}
           />

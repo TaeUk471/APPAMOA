@@ -2,8 +2,9 @@
 
 import { useRef, useEffect, useState } from "react";
 
-import registMouseDownDrag from "@utils/registMouseDownDrag";
+import registMouseDownDrag from "@utils/registDrag";
 import usePageDataStore from "store/usePageDataStore";
+import useSelectionStore from "store/useSelectionStore";
 
 import DraggableResizableComponent from "./DragAndResizeComponent";
 
@@ -12,6 +13,7 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
   const [containerOffset, setContainerOffset] = useState({ x: 0, y: 0 });
   const pages = usePageDataStore(state => state.pages);
   const pageData = pages[pageId];
+  const clearSelection = useSelectionStore(state => state.clearSelection);
 
   const updateOffset = () => {
     if (dropRef.current) {
@@ -41,15 +43,21 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     }));
   };
 
-  // 드래그용 props
   const dragProps = registMouseDownDrag(handleDragChange, true);
+
+  const handleClearSelect = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).id === `a4-container-${pageId}`) {
+      clearSelection();
+    }
+  };
 
   return (
     <div
       ref={dropRef}
       {...dragProps}
       id={`a4-container-${pageId}`}
-      className="w-[210mm] h-[297mm] m-auto bg-white relative border-2 border-black overflow-hidden p-[10px]">
+      onClick={handleClearSelect}
+      className="w-[793.7px] h-[1122.5px] m-auto bg-white relative border-2 border-black overflow-hidden p-[10px]">
       {pageData?.imageSet?.map(image => (
         <DraggableResizableComponent
           key={image.id}

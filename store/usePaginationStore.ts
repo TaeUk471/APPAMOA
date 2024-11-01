@@ -12,7 +12,7 @@ interface PaginationState {
 
 const usePaginationStore = create<PaginationState>(set => ({
   totalPage: 1,
-  currentPage: [],
+  currentPage: {},
   setTotalPage: totalPage => set({ totalPage }),
   increaseTotalPage: () => set(state => ({ totalPage: state.totalPage + 1 })),
   decreaseTotalPage: () => set(state => ({ totalPage: Math.max(1, state.totalPage - 1) })),

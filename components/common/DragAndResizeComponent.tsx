@@ -1,8 +1,10 @@
 // DragAndResizeComponent.tsx
 import { useRef } from "react";
+import { Resizable, ResizeCallbackData } from "react-resizable";
 
-import registMouseDownDrag from "@utils/registMouseDownDrag";
+import registMouseDownDrag from "@utils/registDrag";
 import usePageDataStore from "store/usePageDataStore";
+import useSelectionStore from "store/useSelectionStore";
 import {
   ImageComponentData,
   DivComponentData,
@@ -26,34 +28,67 @@ interface DraggableComponentProps {
 }
 
 const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentProps) => {
-  const { id, x, y } = data;
+  const { id, x, y, width, height } = data;
   const updateComponent = usePageDataStore(state => state.updateComponent);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { selectedComponentId, selectComponent } = useSelectionStore();
+  const isSelected = selectedComponentId === id;
 
   const handleDragChange = (deltaX: number, deltaY: number) => {
     const adjustedX = x + deltaX;
     const adjustedY = y + deltaY;
     updateComponent(pageId, componentType, id, { x: adjustedX, y: adjustedY });
   };
-
   const dragProps = registMouseDownDrag(handleDragChange, true);
+
+  const handleResize = (e: React.SyntheticEvent, { size }: ResizeCallbackData) => {
+    updateComponent(pageId, componentType, id, { width: size.width, height: size.height });
+  };
+
+  const handleSelect = () => {
+    selectComponent(id);
+  };
 
   return (
     <div
       ref={containerRef}
-      {...dragProps}
+      {...(isSelected ? {} : dragProps)}
+      onClick={handleSelect}
       style={{
         position: "absolute",
         left: x,
         top: y,
-        cursor: "move",
-        border: "1px solid #ccc",
+        cursor: isSelected ? "default" : "move",
+        border: isSelected ? "1px solid #07A" : "1px solid #ccc",
       }}
       onDragStart={e => e.preventDefault()}>
-      {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
-      {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
-      {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
-      {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
+      <Resizable
+        width={width}
+        height={height}
+        onResize={handleResize}
+        resizeHandles={isSelected ? ["se", "sw", "ne", "nw"] : []}
+        minConstraints={[80, 80]}>
+        <div
+          style={{
+            width: `${width}px`,
+            height: `${height}px`,
+            position: "relative",
+          }}>
+          {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
+          {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
+          {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
+          {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
+          {isSelected && (
+            <>
+              <div className="absolute top-0 left-0 w-4 h-4 bg-white rounded-full cursor-nw-resize" />
+              <div className="absolute top-0 right-0 w-4 h-4 bg-white rounded-full cursor-ne-resize" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 bg-white rounded-full cursor-sw-resize" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-full cursor-se-resize" />
+            </>
+          )}
+        </div>
+      </Resizable>
     </div>
   );
 };

@@ -1,11 +1,14 @@
-import html2pdf from "html2pdf.js";
+"use client";
+
 import { create } from "zustand";
 
 const useExportPDFStore = create(() => ({
-  handleExportPDF: (name: string) => {
+  handleExportPDF: async (name: string) => {
     if (typeof window !== "undefined") {
       const element = document.getElementById(`a4-container-${name}`);
       if (element) {
+        const html2pdf = (await import("html2pdf.js")).default;
+        console.log("몇번 실행돼!?");
         html2pdf().from(element).save();
       }
     }

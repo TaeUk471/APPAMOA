@@ -11,6 +11,12 @@ body {
   font-size: 1.6rem;
   font-family: "DMSans", "Inter", sans-serif;
   background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+img{
+  min-width: 100%;
+  max-height: 100%;
 }
 
 h1,
@@ -21,6 +27,7 @@ h5,
 h6 {
   color: #000000;
 }
+
 
 a {
   color: #76a5ea;
