@@ -1,5 +1,5 @@
 // DragAndResizeComponent.tsx
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Resizable, ResizeCallbackData } from "react-resizable";
 
 import registMouseDownDrag from "@utils/registDrag";
@@ -30,6 +30,7 @@ interface DraggableComponentProps {
 const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentProps) => {
   const { id, x, y, width, height } = data;
   const updateComponent = usePageDataStore(state => state.updateComponent);
+  const deleteComponent = usePageDataStore(state => state.deleteComponent);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { selectedComponentId, selectComponent } = useSelectionStore();
@@ -50,6 +51,19 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
     selectComponent(id);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isSelected && e.key === "Delete") {
+        deleteComponent(pageId, componentType, id);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isSelected, pageId, componentType, id, deleteComponent]);
+
   return (
     <div
       ref={containerRef}
@@ -68,7 +82,26 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
         height={height}
         onResize={handleResize}
         resizeHandles={isSelected ? ["se", "sw", "ne", "nw"] : []}
-        minConstraints={[80, 80]}>
+        minConstraints={[80, 80]}
+        handle={(resizeHandle, ref) => (
+          <div
+            ref={ref}
+            className={`resize-handle ${resizeHandle}`}
+            style={{
+              borderRadius: "8px",
+              pointerEvents: "auto",
+              cursor: `${resizeHandle}-resize`,
+              width: "5px",
+              height: "5px",
+              backgroundColor: "white",
+              position: "absolute",
+              ...(resizeHandle === "se" && { bottom: 0, right: 0 }),
+              ...(resizeHandle === "sw" && { bottom: 0, left: 0 }),
+              ...(resizeHandle === "ne" && { top: 0, right: 0 }),
+              ...(resizeHandle === "nw" && { top: 0, left: 0 }),
+            }}
+          />
+        )}>
         <div
           style={{
             width: `${width}px`,
@@ -79,14 +112,6 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
           {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
           {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
           {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
-          {isSelected && (
-            <>
-              <div className="absolute top-0 left-0 w-4 h-4 bg-white rounded-full cursor-nw-resize" />
-              <div className="absolute top-0 right-0 w-4 h-4 bg-white rounded-full cursor-ne-resize" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 bg-white rounded-full cursor-sw-resize" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-full cursor-se-resize" />
-            </>
-          )}
         </div>
       </Resizable>
     </div>
