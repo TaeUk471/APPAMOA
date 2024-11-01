@@ -1,7 +1,7 @@
+// DragAndResizeComponent.tsx
 import { useRef } from "react";
-import { useDrag, useDrop } from "react-dnd";
-import { Resizable, ResizeCallbackData } from "react-resizable";
 
+import registMouseDownDrag from "@utils/registMouseDownDrag";
 import usePageDataStore from "store/usePageDataStore";
 import {
   ImageComponentData,
@@ -18,62 +18,44 @@ import TextareaComponent from "./dnd&resize/TextareaComponent";
 
 type ComponentData = ImageComponentData | DivComponentData | TableComponentData | TextareaComponentData;
 
-interface DraggableResizableComponentProps {
+interface DraggableComponentProps {
   data: ComponentData;
   componentType: keyof PageData;
   pageId: string;
+  containerOffset: { x: number; y: number };
 }
 
-const DraggableResizableComponent = ({ data, componentType, pageId }: DraggableResizableComponentProps) => {
-  const { id, x, y, width, height } = data;
+const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentProps) => {
+  const { id, x, y } = data;
   const updateComponent = usePageDataStore(state => state.updateComponent);
-
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [{ isDragging }, drag] = useDrag({
-    type: "BOX",
-    item: { id, pageId, componentType },
-    collect: monitor => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  });
-
-  const [, drop] = useDrop({
-    accept: "BOX",
-    drop: () => ({ id, pageId, componentType }),
-  });
-
-  const handleResize = (e: React.SyntheticEvent, { size }: ResizeCallbackData) => {
-    e.stopPropagation(); // Prevents drag event on resize
-    updateComponent(pageId, componentType, id, { width: size.width, height: size.height });
+  const handleDragChange = (deltaX: number, deltaY: number) => {
+    const adjustedX = x + deltaX;
+    const adjustedY = y + deltaY;
+    updateComponent(pageId, componentType, id, { x: adjustedX, y: adjustedY });
   };
 
-  const handleResizeStop = (e: React.SyntheticEvent, { size }: ResizeCallbackData) => {
-    e.stopPropagation();
-    updateComponent(pageId, componentType, id, { width: size.width, height: size.height });
-  };
-
-  drag(drop(containerRef));
+  const dragProps = registMouseDownDrag(handleDragChange, true);
 
   return (
-    <Resizable width={width} height={height} onResize={handleResize} onResizeStop={handleResizeStop}>
-      <div
-        ref={containerRef}
-        style={{
-          position: "absolute",
-          left: x,
-          top: y,
-          width: `${width}px`,
-          height: `${height}px`,
-          opacity: isDragging ? 0.5 : 1,
-        }}>
-        {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
-        {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
-        {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
-        {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
-      </div>
-    </Resizable>
+    <div
+      ref={containerRef}
+      {...dragProps}
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        cursor: "move",
+        border: "1px solid #ccc",
+      }}
+      onDragStart={e => e.preventDefault()}>
+      {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
+      {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
+      {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
+      {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
+    </div>
   );
 };
 
-export default DraggableResizableComponent;
+export default DraggableComponent;
