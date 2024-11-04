@@ -56,7 +56,7 @@ const usePageDataStore = create<PageDataStore>(set => ({
       x: 50,
       y: 50,
       width: 150,
-      height: 150,
+      height: 20,
       color,
     };
     set(state => ({
@@ -101,7 +101,7 @@ const usePageDataStore = create<PageDataStore>(set => ({
     }));
   },
 
-  addTextareaComponent: (pageId, placeholder, underline, content) => {
+  addTextareaComponent: (pageId, placeholder, underline = false, content = "") => {
     const newTextarea: TextareaComponentData = {
       id: uuidv4(),
       x: 150,

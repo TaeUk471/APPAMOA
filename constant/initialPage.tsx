@@ -8,7 +8,7 @@ export const initialPageData: { [key: string]: PageData } = {
       { id: uuidv4(), x: 0, y: 0, width: 200, height: 100, url: "/images/고먐미.jpeg" },
       { id: uuidv4(), x: 150, y: 100, width: 120, height: 120, url: "/images/고먐미.jpeg" },
     ],
-    divSet: [{ id: uuidv4(), x: 100, y: 100, width: 150, height: 150, color: "black" }],
+    divSet: [{ id: uuidv4(), x: 100, y: 100, width: 150, height: 20, color: "black" }],
     tableSet: [
       {
         id: uuidv4(),

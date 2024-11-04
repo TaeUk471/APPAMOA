@@ -58,7 +58,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown); // 전역적으로 탐색
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -74,7 +74,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
         left: x,
         top: y,
         cursor: isSelected ? "default" : "move",
-        border: isSelected ? "1px solid #07A" : "1px solid #ccc",
+        border: isSelected ? "1px solid #07A" : "",
       }}
       onDragStart={e => e.preventDefault()}>
       <Resizable
@@ -82,7 +82,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
         height={height}
         onResize={handleResize}
         resizeHandles={isSelected ? ["se", "sw", "ne", "nw"] : []}
-        minConstraints={[80, 80]}
+        minConstraints={componentType === "divSet" ? [80, 5] : [80, 80]}
         handle={(resizeHandle, ref) => (
           <div
             ref={ref}
