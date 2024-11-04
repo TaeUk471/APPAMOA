@@ -3,7 +3,6 @@ import { create } from "zustand";
 
 import { initialPageData } from "constant/initialPage";
 import {
-  BaseComponentData,
   DivComponentData,
   ImageComponentData,
   PageData,
@@ -19,11 +18,11 @@ interface PageDataStore {
   addTableComponent: (pageId: string, rows: number, columns: number, data: RowData[]) => void;
   addTextareaComponent: (pageId: string, placeholder: string, underline: boolean, content: string) => void;
   deleteComponent: (pageId: string, componentType: keyof PageData, componentId: string) => void;
-  updateComponent: (
+  updateComponent: <ComponentType extends keyof PageData>(
     pageId: string,
-    componentType: keyof PageData,
+    componentType: ComponentType,
     componentId: string,
-    updates: Partial<BaseComponentData>
+    updates: Partial<PageData[ComponentType][number]>
   ) => void;
 }
 

@@ -7,13 +7,14 @@ import InputSidebar from "@components/common/sidebar/InputSidebar";
 
 //오직 PC 버전만 지원
 export default function EditLayout({ children }: { children: ReactNode }) {
+  const pageId = "page1";
   return (
     <div className="flex flex-col min-h-screen">
       <GNB />
       <div className="flex flex-1 bg-slate-300">
         <div className="flex-1">{children}</div>
         <ElementSidebar />
-        <InputSidebar />
+        <InputSidebar pageId={pageId} />
       </div>
       <Footer />
     </div>

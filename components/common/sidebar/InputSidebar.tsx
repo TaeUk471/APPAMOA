@@ -1,9 +1,24 @@
 "use client";
 
-import useToggle from "@hooks/useToggle";
+import { useEffect } from "react";
 
-const InputSidebar = () => {
+import useToggle from "@hooks/useToggle";
+import usePageDataStore from "store/usePageDataStore";
+import useSelectionStore from "store/useSelectionStore";
+
+const InputSidebar = ({ pageId }: { pageId: string }) => {
   const { isOpen: isSidebarOpen, toggle: toggleSidebar } = useToggle(); // 사이드바용 토글 상태
+  const pages = usePageDataStore(state => state.pages);
+  const pageData = pages[pageId];
+  const selectedComponentId = useSelectionStore(state => state.selectedComponentId) || "";
+  const updateComponent = usePageDataStore(state => state.updateComponent);
+
+  const handleUpdateComponent = () =>
+    updateComponent(pageId, "textareaSet", selectedComponentId, { x: 200, y: 300, content: "dasdfasdf" });
+
+  useEffect(() => {
+    console.log(selectedComponentId, pageData);
+  }, [pageData, selectedComponentId]);
 
   return (
     <div className="relative">
@@ -19,7 +34,9 @@ const InputSidebar = () => {
         {isSidebarOpen && (
           <div
             className={"flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-200"}>
-            {/* ElementSidebar Content */}
+            <button className="fa p-4 cursor-pointer border-2 text-white bg-pink-200" onClick={handleUpdateComponent}>
+              내가 바꿔볼게!
+            </button>
           </div>
         )}
         {/* Footer */}
