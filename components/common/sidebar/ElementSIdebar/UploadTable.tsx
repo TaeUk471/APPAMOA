@@ -4,11 +4,11 @@ import React from "react";
 
 import usePageDataStore from "store/usePageDataStore";
 
-const UploadTable = () => {
+const UploadTable = ({ pageId }: { pageId: string }) => {
   const handleUploadTable = usePageDataStore(state => state.addTableComponent);
 
   const handleButtonClick = () =>
-    handleUploadTable("page1", 3, 3, [
+    handleUploadTable(pageId, 3, 3, [
       {
         row: 1,
         cells: [

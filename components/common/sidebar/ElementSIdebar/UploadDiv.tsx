@@ -4,10 +4,10 @@ import React from "react";
 
 import usePageDataStore from "store/usePageDataStore";
 
-const UploadDiv = () => {
+const UploadDiv = ({ pageId }: { pageId: string }) => {
   const handleUploadDiv = usePageDataStore(state => state.addDivComponent);
 
-  const handleButtonClick = () => handleUploadDiv("page1", "black");
+  const handleButtonClick = () => handleUploadDiv(pageId, "black");
 
   return (
     <div className={"fixed left-0 transition-all w-14 h-fit top-[130px] flex flex-col"}>

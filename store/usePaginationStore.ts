@@ -1,27 +1,37 @@
-// useAppStore.ts
 import { create } from "zustand";
 
+import User1 from "constant/DummyUser";
+
+import { generatePageId } from "../utils/generatePageId";
+
 interface PaginationState {
-  totalPage: number;
-  currentPage: { [pageId: string]: number };
-  setTotalPage: (totalPage: number) => void;
-  increaseTotalPage: () => void;
-  decreaseTotalPage: () => void;
-  setCurrentPage: (pageId: string, currentPage: number) => void;
+  pages: string[];
+  currentPageIndex: number;
+  addPage: (name: string, date: string) => void;
+  removeLastPage: () => void;
+  setCurrentPageIndex: (index: number) => void;
 }
 
 const usePaginationStore = create<PaginationState>(set => ({
-  totalPage: 1,
-  currentPage: {},
-  setTotalPage: totalPage => set({ totalPage }),
-  increaseTotalPage: () => set(state => ({ totalPage: state.totalPage + 1 })),
-  decreaseTotalPage: () => set(state => ({ totalPage: Math.max(1, state.totalPage - 1) })),
-  setCurrentPage: (pageId, currentPage) =>
+  pages: [generatePageId(User1.name, User1.date, 1)],
+  currentPageIndex: 0,
+
+  addPage: (name, date) =>
+    set(state => {
+      const newPageId = generatePageId(name, date, state.pages.length + 1);
+      return {
+        pages: [...state.pages, newPageId],
+      };
+    }),
+
+  removeLastPage: () =>
     set(state => ({
-      currentPage: {
-        ...state.currentPage,
-        [pageId]: currentPage,
-      },
+      pages: state.pages.length > 1 ? state.pages.slice(0, -1) : state.pages,
+    })),
+
+  setCurrentPageIndex: (index: number) =>
+    set(state => ({
+      currentPageIndex: index >= 0 && index < state.pages.length ? index : state.currentPageIndex,
     })),
 }));
 

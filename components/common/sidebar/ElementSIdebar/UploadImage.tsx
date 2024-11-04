@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 
 import usePageDataStore from "store/usePageDataStore";
 
-const UploadImage = () => {
+const UploadImage = ({ pageId }: { pageId: string }) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const handleUploadImage = usePageDataStore(state => state.addImageComponent);
   const fileInputRef = useRef<HTMLInputElement>(null!);
@@ -17,7 +17,7 @@ const UploadImage = () => {
         const file = files[i];
         if (file.type.startsWith("image/")) {
           const imageUrl = URL.createObjectURL(file);
-          handleUploadImage("page1", imageUrl); // 추후에 변경해야함 pagination과 연결 해야함!.
+          handleUploadImage(pageId, imageUrl); // 추후에 변경해야함 pagination과 연결 해야함!.
         } else {
           alert("이미지 파일만 선택할 수 있습니다.");
         }

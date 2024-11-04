@@ -52,8 +52,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
   addDivComponent: (pageId, color) => {
     const newDiv: DivComponentData = {
       id: uuidv4(),
-      x: 50,
-      y: 50,
+      x: 10,
+      y: 100,
       width: 150,
       height: 20,
       color,
@@ -72,8 +72,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
   addTableComponent: (pageId, rows, columns, data) => {
     const newTable: TableComponentData = {
       id: uuidv4(),
-      x: 100,
-      y: 100,
+      x: 10,
+      y: 200,
       width: 300,
       height: 200,
       rows,
@@ -103,8 +103,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
   addTextareaComponent: (pageId, placeholder, underline = false, content = "") => {
     const newTextarea: TextareaComponentData = {
       id: uuidv4(),
-      x: 150,
-      y: 150,
+      x: 10,
+      y: 300,
       width: 250,
       height: 100,
       placeholder,

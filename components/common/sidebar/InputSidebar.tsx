@@ -18,7 +18,7 @@ const InputSidebar = ({ pageId }: { pageId: string }) => {
 
   useEffect(() => {
     console.log(selectedComponentId, pageData);
-  }, [pageData, selectedComponentId]);
+  }, []);
 
   return (
     <div className="relative">

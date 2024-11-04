@@ -5,13 +5,13 @@ import UploadImage from "./ElementSIdebar/UploadImage";
 import UploadTable from "./ElementSIdebar/UploadTable";
 import UploadTextArea from "./ElementSIdebar/UploadTextArea";
 
-const ElementSidebar = () => {
+const ElementSidebar = ({ pageId }: { pageId: string }) => {
   return (
     <div className="relative">
-      <UploadImage />
-      <UploadDiv />
-      <UploadTable />
-      <UploadTextArea />
+      <UploadImage pageId={pageId} />
+      <UploadDiv pageId={pageId} />
+      <UploadTable pageId={pageId} />
+      <UploadTextArea pageId={pageId} />
     </div>
   );
 };

@@ -1,19 +1,17 @@
 "use client";
 
 import Button from "@components/button/Button";
-import useEditStore from "store/useEditStore";
+// import useEditStore from "store/useEditStore";
 import useExportPDFStore from "store/useExportPDFStore";
 import usePaginationStore from "store/usePaginationStore";
 
 import Pagination from "../Pagination";
 
 const EditHeader = () => {
-  const setIsEdit = useEditStore(state => state.setIsEdit);
-  const currentPage = usePaginationStore(state => state.currentPage);
-  const pageId = Object.keys(currentPage)[0];
-  console.log(setIsEdit);
-
+  const pages = usePaginationStore(state => state.pages);
+  const currentPageIndex = usePaginationStore(state => state.currentPageIndex);
   const handleExportPDF = useExportPDFStore(state => state.handleExportPDF);
+  const currentPage = pages[currentPageIndex];
 
   return (
     <>
@@ -24,13 +22,14 @@ const EditHeader = () => {
             편집 기능
           </Button>
         </div>
-        <Pagination pageId="edit" />
+        <Pagination />
         <div className="flex gap-6">
           <Button size={"s"} color={"primary"} isLoading={false}>
             미리보기
           </Button>
-          <Button size={"s"} color={"primary"} isLoading={false} onClick={() => handleExportPDF(pageId)}>
+          <Button size={"s"} color={"primary"} isLoading={false} onClick={() => handleExportPDF(currentPage)}>
             pdf 출력하기
+            {/* 이후에 전체 PDF 출력으로 변경해야함 */}
           </Button>
         </div>
       </div>

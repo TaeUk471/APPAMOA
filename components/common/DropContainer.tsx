@@ -29,6 +29,7 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     updateOffset();
     window.addEventListener("resize", updateOffset);
     window.addEventListener("scroll", updateOffset);
+    console.log(pageId);
 
     return () => {
       window.removeEventListener("resize", updateOffset);
@@ -57,7 +58,7 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
       {...dragProps}
       id={`a4-container-${pageId}`}
       onClick={handleClearSelect}
-      className="w-[793.7px] h-[1122.5px] m-auto bg-white relative border-2 border-black overflow-hidden p-[10px]">
+      className="w-[793.7px] h-[1122.5px] m-auto mt-6 bg-white relative border-2 border-black overflow-hidden p-[10px]">
       {pageData?.imageSet?.map(image => (
         <DraggableResizableComponent
           key={image.id}

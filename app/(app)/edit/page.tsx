@@ -5,6 +5,9 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import DropContainer from "@components/common/DropContainer";
+import ElementSidebar from "@components/common/sidebar/ElementSidebar";
+import InputSidebar from "@components/common/sidebar/InputSidebar";
+import usePaginationStore from "store/usePaginationStore";
 
 const EditPage = () => {
   /*const [zoomLevel, setZoomLevel] = useState<number>(1);
@@ -23,16 +26,19 @@ const EditPage = () => {
     };
   }, []);*/
 
-  const pageId = "page1";
+  const pages = usePaginationStore(state => state.pages);
+  const currentPageIndex = usePaginationStore(state => state.currentPageIndex);
+  const currentPage = pages[currentPageIndex];
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="edit-page-container" /*style={{ transform: `scale(${zoomLevel})`, transformOrigin: "center" }}*/>
-        <h1>Edit Page</h1>
         <div className="drag-and-drop-area">
-          <DropContainer pageId={pageId} />
+          <DropContainer pageId={currentPage} />
         </div>
       </div>
+      <ElementSidebar pageId={currentPage} />
+      <InputSidebar pageId={currentPage} />
     </DndProvider>
   );
 };
