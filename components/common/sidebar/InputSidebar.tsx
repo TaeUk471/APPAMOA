@@ -25,7 +25,7 @@ const InputSidebar = ({ pageId }: { pageId: string }) => {
       {/* ElementSidebar */}
       <div
         className={`bg-purple-900 fixed top-25 right-0 transition-all
-        ${isSidebarOpen ? "w-[400px] h-5/6" : "w-14 h-fit top-[80px]"} flex flex-col`}>
+        ${isSidebarOpen ? "w-[400px] h-5/6 top-[75px]" : "w-14 h-fit top-[80px]"} flex flex-col`}>
         <div className={"flex justify-between items-center p-4"}>
           <button onClick={toggleSidebar} className="cursor-pointer flex items-center justify-center h-8">
             {isSidebarOpen ? <i className="fas fa-times text-white" /> : <i className="fas fa-bars text-white" />}

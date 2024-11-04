@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@components/button/Button";
-// import useEditStore from "store/useEditStore";
+// import useEditStore from "store/useEditStore"; 편집 중, 아닌지 격리
 import useExportPDFStore from "store/useExportPDFStore";
 import usePaginationStore from "store/usePaginationStore";
 
