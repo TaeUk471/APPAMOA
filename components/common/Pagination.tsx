@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-
 import User1 from "constant/DummyUser";
 import usePaginationStore from "store/usePaginationStore";
 
@@ -13,7 +11,6 @@ export default function Pagination() {
   const removeLastPage = usePaginationStore(state => state.removeLastPage);
 
   const totalPage = pages.length > 3 ? pages.length : 3;
-  const currentPage = pages[currentPageIndex];
   const range = 1;
 
   const handlePageChange = (newIndex: number) => {
@@ -30,13 +27,6 @@ export default function Pagination() {
       pageList.push("...");
     }
   }
-
-  useEffect(() => {
-    console.log("Current Page State:", currentPage);
-    console.log("pagelist", pageList);
-    console.log("Complete currentPage object:", usePaginationStore.getState());
-    console.log("Current page index:", currentPageIndex);
-  }, [currentPage]);
 
   return (
     <nav className="flex w-[450px] items-center justify-between gap-4">

@@ -12,25 +12,25 @@ const UploadTable = ({ pageId }: { pageId: string }) => {
       {
         row: 1,
         cells: [
-          { col: 1, content: "표 입니다" },
-          { col: 2, content: "Cell 1-2" },
-          { col: 3, content: "Cell 1-3" },
+          { col: 1, content: "혈액" },
+          { col: 2, content: "혈장" },
+          { col: 3, content: "혈소판" },
         ],
       },
       {
         row: 2,
         cells: [
-          { col: 1, content: "Cell 2-1" },
-          { col: 2, content: "Cell 2-2" },
-          { col: 3, content: "Cell 2-3" },
+          { col: 1, content: "정상치" },
+          { col: 2, content: "0~0" },
+          { col: 3, content: "0~0" },
         ],
       },
       {
         row: 3,
         cells: [
-          { col: 1, content: "Cell 3-1" },
-          { col: 2, content: "Cell 3-2" },
-          { col: 3, content: "Cell 3-3" },
+          { col: 1, content: "추정치" },
+          { col: 2, content: "0.1" },
+          { col: 3, content: "12.4" },
         ],
       },
     ]); // 차후 모달창을 통한 json 데이터 입력 혹은 로컬 json파일 선택으로 대체 예정 (1안)=> 데이터 fetching이 가능하다면 서버에서 받아올 예정

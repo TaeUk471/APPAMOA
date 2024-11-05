@@ -1,4 +1,3 @@
-// DragAndResizeComponent.tsx
 import { useEffect, useRef } from "react";
 import { Resizable, ResizeCallbackData } from "react-resizable";
 
@@ -82,7 +81,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
         height={height}
         onResize={handleResize}
         resizeHandles={isSelected ? ["se", "sw", "ne", "nw"] : []}
-        minConstraints={componentType === "divSet" ? [80, 3] : componentType === "textareaSet" ? [80, 30] : [80, 80]}
+        minConstraints={componentType === "divSet" ? [80, 2] : componentType === "textareaSet" ? [80, 30] : [80, 80]}
         handle={(resizeHandle, ref) => (
           <div
             ref={ref}

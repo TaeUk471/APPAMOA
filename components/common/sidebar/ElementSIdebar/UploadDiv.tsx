@@ -13,7 +13,7 @@ const UploadDiv = ({ pageId }: { pageId: string }) => {
     <div className={"fixed left-0 transition-all w-14 h-fit top-[130px] flex flex-col"}>
       <div className={"flex justify-between items-center"}>
         <button onClick={handleButtonClick}>
-          <i className={"fa fa-section cursor-pointer px-[14px] py-4 bg-pink-300 rounded-r-lg  "} />
+          <i className={"fa fa-grip-lines-vertical cursor-pointer px-[15px] py-4 bg-pink-300 rounded-r-lg  "} />
         </button>
       </div>
     </div>

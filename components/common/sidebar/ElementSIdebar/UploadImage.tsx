@@ -17,7 +17,7 @@ const UploadImage = ({ pageId }: { pageId: string }) => {
         const file = files[i];
         if (file.type.startsWith("image/")) {
           const imageUrl = URL.createObjectURL(file);
-          handleUploadImage(pageId, imageUrl); // 추후에 변경해야함 pagination과 연결 해야함!.
+          handleUploadImage(pageId, imageUrl);
         } else {
           alert("이미지 파일만 선택할 수 있습니다.");
         }

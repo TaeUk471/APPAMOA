@@ -7,7 +7,7 @@ export const initialPageData: { [key: string]: PageData } = {
     imageSet: [
       // { id: uuidv4(), x: 0, y: 0, width: 100, height: 100, url: "/images/고먐미.jpeg" }
     ],
-    divSet: [{ id: uuidv4(), x: 11, y: 90, width: 755, height: 3, color: "black" }],
+    divSet: [{ id: uuidv4(), x: 11, y: 90, width: 755, height: 2, color: "black" }],
     tableSet: [
       // {
       //   id: uuidv4(),
@@ -200,7 +200,7 @@ export const initialPageData: { [key: string]: PageData } = {
       { id: uuidv4(), x: 60, y: 110, width: 70, height: 70, url: "/icons/medicalReport.png" },
       { id: uuidv4(), x: 60, y: 380, width: 70, height: 70, url: "/icons/heartbeat.png" },
     ],
-    divSet: [{ id: uuidv4(), x: 45, y: 90, width: 700, height: 3, color: "blue" }],
+    divSet: [{ id: uuidv4(), x: 45, y: 90, width: 700, height: 2, color: "blue" }],
     tableSet: [
       {
         id: uuidv4(),
@@ -361,7 +361,7 @@ export const initialPageData: { [key: string]: PageData } = {
         id: uuidv4(),
         x: 240,
         y: 110,
-        width: 630,
+        width: 530,
         height: 90,
         placeholder: "Enter text",
         underline: true,
