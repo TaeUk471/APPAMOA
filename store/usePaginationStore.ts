@@ -13,7 +13,11 @@ interface PaginationState {
 }
 
 const usePaginationStore = create<PaginationState>(set => ({
-  pages: [generatePageId(User1.name, User1.date, 1)],
+  pages: [
+    generatePageId(User1.name, User1.date, 1),
+    generatePageId(User1.name, User1.date, 2),
+    generatePageId(User1.name, User1.date, 3),
+  ],
   currentPageIndex: 0,
 
   addPage: (name, date) =>
@@ -26,7 +30,7 @@ const usePaginationStore = create<PaginationState>(set => ({
 
   removeLastPage: () =>
     set(state => ({
-      pages: state.pages.length > 1 ? state.pages.slice(0, -1) : state.pages,
+      pages: state.pages.length > 3 ? state.pages.slice(0, -1) : state.pages,
     })),
 
   setCurrentPageIndex: (index: number) =>

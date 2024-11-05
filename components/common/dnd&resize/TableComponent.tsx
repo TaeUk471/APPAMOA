@@ -1,12 +1,18 @@
 import { TableComponentData } from "types/componenttype";
 
 const TableComponent = ({ data }: { data: TableComponentData }) => (
-  <table style={{ width: "100%", height: "100%" }}>
+  <table style={{ width: "100%", height: "100%", borderCollapse: "collapse" }} className="text-center">
     <tbody>
       {data.data.map(row => (
         <tr key={row.row}>
-          {row.cells.map(cell => (
-            <td key={cell.col}>{cell.content}</td>
+          {row.cells.map((cell, cellIndex) => (
+            <td
+              key={cell.col}
+              className={`border-3 border-black 
+                ${cellIndex === 0 ? "border-l-0" : ""} 
+                ${cellIndex === row.cells.length - 1 ? "border-r-0" : ""}`}>
+              {cell.content}
+            </td>
           ))}
         </tr>
       ))}

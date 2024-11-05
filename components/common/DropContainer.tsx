@@ -51,10 +51,6 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(pageData);
-  }, [pageData]);
-
   return (
     <div
       ref={dropRef}

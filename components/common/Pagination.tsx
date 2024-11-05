@@ -12,7 +12,7 @@ export default function Pagination() {
   const addPage = usePaginationStore(state => state.addPage);
   const removeLastPage = usePaginationStore(state => state.removeLastPage);
 
-  const totalPage = pages.length;
+  const totalPage = pages.length > 3 ? pages.length : 3;
   const currentPage = pages[currentPageIndex];
   const range = 1;
 
@@ -22,7 +22,7 @@ export default function Pagination() {
     }
   };
 
-  const pageList = [];
+  const pageList: (string | number)[] = [];
   for (let i = 1; i <= totalPage; i++) {
     if (i === 1 || i === totalPage || (i >= currentPageIndex + 1 - range && i <= currentPageIndex + 1 + range)) {
       pageList.push(i);
@@ -33,6 +33,7 @@ export default function Pagination() {
 
   useEffect(() => {
     console.log("Current Page State:", currentPage);
+    console.log("pagelist", pageList);
     console.log("Complete currentPage object:", usePaginationStore.getState());
     console.log("Current page index:", currentPageIndex);
   }, [currentPage]);
