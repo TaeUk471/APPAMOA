@@ -1,7 +1,7 @@
 "use client";
 
-import User1 from "constant/DummyUser";
 import usePaginationStore from "store/usePaginationStore";
+import useSelectUserStore from "store/useSelectUserStore";
 
 export default function Pagination() {
   const pages = usePaginationStore(state => state.pages);
@@ -9,6 +9,7 @@ export default function Pagination() {
   const setCurrentPageIndex = usePaginationStore(state => state.setCurrentPageIndex);
   const addPage = usePaginationStore(state => state.addPage);
   const removeLastPage = usePaginationStore(state => state.removeLastPage);
+  const user = useSelectUserStore(state => state.user);
 
   const totalPage = pages.length > 3 ? pages.length : 3;
   const range = 1;
@@ -60,7 +61,7 @@ export default function Pagination() {
           &raquo;
         </button>
       </ul>
-      <button className="btn-common btn-hover" onClick={() => addPage(User1.name, User1.date)}>
+      <button className="btn-common btn-hover" onClick={() => addPage(user.name, user.examinationId)}>
         {"+"}
       </button>
     </nav>

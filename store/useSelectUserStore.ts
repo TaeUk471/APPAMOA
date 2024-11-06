@@ -1,0 +1,13 @@
+import { create } from "zustand";
+
+interface SelectUserState {
+  user: { examinationId: string; name: string };
+  setUser: ({ examinationId, name }: { examinationId: string; name: string }) => void;
+}
+
+const useSelectUserStore = create<SelectUserState>(set => ({
+  user: { examinationId: "202411041", name: "김모아" },
+  setUser: ({ name, examinationId }) => set({ user: { name, examinationId } }),
+}));
+
+export default useSelectUserStore;

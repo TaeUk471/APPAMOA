@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { PageData } from "types/componenttype";
 
 export const initialPageData: { [key: string]: PageData } = {
-  김모아202411041: {
+  김모아2024110411: {
     imageSet: [
       // { id: uuidv4(), x: 0, y: 0, width: 100, height: 100, url: "/images/고먐미.jpeg" }
     ],
@@ -195,7 +195,7 @@ export const initialPageData: { [key: string]: PageData } = {
       },
     ],
   },
-  김모아202411042: {
+  김모아2024110412: {
     imageSet: [
       { id: uuidv4(), x: 60, y: 110, width: 70, height: 70, url: "/icons/medicalReport.png" },
       { id: uuidv4(), x: 60, y: 380, width: 70, height: 70, url: "/icons/heartbeat.png" },

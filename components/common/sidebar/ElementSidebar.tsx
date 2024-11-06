@@ -1,5 +1,6 @@
 "use client";
 
+import UploadData from "./ElementSIdebar/UploadData";
 import UploadDiv from "./ElementSIdebar/UploadDiv";
 import UploadImage from "./ElementSIdebar/UploadImage";
 import UploadTable from "./ElementSIdebar/UploadTable";
@@ -12,6 +13,7 @@ const ElementSidebar = ({ pageId }: { pageId: string }) => {
       <UploadDiv pageId={pageId} />
       <UploadTable pageId={pageId} />
       <UploadTextArea pageId={pageId} />
+      <UploadData pageId={pageId} />
     </div>
   );
 };

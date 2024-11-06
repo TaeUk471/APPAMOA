@@ -1,7 +1,5 @@
 import { create } from "zustand";
 
-import User1 from "constant/DummyUser";
-
 import { generatePageId } from "../utils/generatePageId";
 
 interface PaginationState {
@@ -10,14 +8,11 @@ interface PaginationState {
   addPage: (name: string, date: string) => void;
   removeLastPage: () => void;
   setCurrentPageIndex: (index: number) => void;
+  resetPages: (name: string, examinationId: string) => void;
 }
 
 const usePaginationStore = create<PaginationState>(set => ({
-  pages: [
-    generatePageId(User1.name, User1.date, 1),
-    generatePageId(User1.name, User1.date, 2),
-    generatePageId(User1.name, User1.date, 3),
-  ],
+  pages: [],
   currentPageIndex: 0,
 
   addPage: (name, date) =>
@@ -36,6 +31,16 @@ const usePaginationStore = create<PaginationState>(set => ({
   setCurrentPageIndex: (index: number) =>
     set(state => ({
       currentPageIndex: index >= 0 && index < state.pages.length ? index : state.currentPageIndex,
+    })),
+
+  resetPages: (name, examinationId) =>
+    set(() => ({
+      pages: [
+        generatePageId(name, examinationId, 1),
+        generatePageId(name, examinationId, 2),
+        generatePageId(name, examinationId, 3),
+      ],
+      currentPageIndex: 0,
     })),
 }));
 
