@@ -16,11 +16,13 @@ const Dropdown = ({ items }: DropdownProps) => {
   const dropDownRef = useClickOutSide(close);
   const { user, setUser } = useSelectUserStore();
   const resetPages = usePaginationStore(state => state.resetPages);
+  const page = usePaginationStore(state => state.pages);
 
   useEffect(() => {
     if (user) {
       resetPages(user.name, user.examinationId);
     }
+    console.log(page);
   }, [user, resetPages]);
 
   return (

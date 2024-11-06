@@ -15,9 +15,9 @@ const usePaginationStore = create<PaginationState>(set => ({
   pages: [],
   currentPageIndex: 0,
 
-  addPage: (name, date) =>
+  addPage: (name, examinationId) =>
     set(state => {
-      const newPageId = generatePageId(name, date, state.pages.length + 1);
+      const newPageId = generatePageId(name, examinationId, state.pages.length + 1);
       return {
         pages: [...state.pages, newPageId],
       };

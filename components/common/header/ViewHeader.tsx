@@ -13,8 +13,8 @@ import Pagination from "../Pagination";
 const EditHeader = () => {
   return (
     <>
-      <div className="relative flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-red-100">
-        <Link href={"/"} className="flex-shrink-0">
+      <div className="relative flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-sky-100">
+        <Link href={"/"} className="cursor-pointer z-10">
           <Image
             src={"/images/APPAMOA.png"}
             width={50}

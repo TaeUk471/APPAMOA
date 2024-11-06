@@ -199,6 +199,7 @@ export const initialPageData: { [key: string]: PageData } = {
     imageSet: [
       { id: uuidv4(), x: 60, y: 110, width: 70, height: 70, url: "/icons/medicalReport.png" },
       { id: uuidv4(), x: 60, y: 380, width: 70, height: 70, url: "/icons/heartbeat.png" },
+      { id: uuidv4(), x: 60, y: 630, width: 70, height: 70, url: "/icons/ear.png" },
     ],
     divSet: [{ id: uuidv4(), x: 45, y: 90, width: 700, height: 2, color: "blue" }],
     tableSet: [
@@ -314,6 +315,127 @@ export const initialPageData: { [key: string]: PageData } = {
         rows: 4,
         columns: 5,
       },
+      {
+        id: uuidv4(),
+        x: 60,
+        y: 730,
+        width: 670,
+        height: 100,
+        data: [
+          {
+            row: 1,
+            cells: [
+              { col: 1, content: "검사항목" },
+              { col: 2, content: "참고치" },
+              { col: 3, content: "2023-01-04" },
+              { col: 4, content: "2021-02-23" },
+              { col: 5, content: "2019-02-27" },
+            ],
+          },
+          {
+            row: 2,
+            cells: [
+              { col: 1, content: "기도청력(500Hz Lt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 3,
+            cells: [
+              { col: 1, content: "기도청력(1000Hz Lt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 4,
+            cells: [
+              { col: 1, content: "기도청력(2000Hz Lt)" },
+              { col: 2, content: "-10~29" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 5,
+            cells: [
+              { col: 1, content: "기도청력(4000Hz Lt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 6,
+            cells: [
+              { col: 1, content: "기도청력(8000Hz Lt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 7,
+            cells: [
+              { col: 1, content: "기도청력(500Hz Rt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 8,
+            cells: [
+              { col: 1, content: "기도청력(1000Hz Rt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 9,
+            cells: [
+              { col: 1, content: "기도청력(2000Hz Rt)" },
+              { col: 2, content: "-10~29" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 10,
+            cells: [
+              { col: 1, content: "기도청력(4000Hz Rt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+          {
+            row: 11,
+            cells: [
+              { col: 1, content: "기도청력(8000Hz Rt)" },
+              { col: 2, content: "-10~39" },
+              { col: 3, content: "10" },
+              { col: 4, content: "10" },
+              { col: 5, content: "10" },
+            ],
+          },
+        ],
+        rows: 4,
+        columns: 5,
+      },
     ],
     textareaSet: [
       {
@@ -389,6 +511,27 @@ export const initialPageData: { [key: string]: PageData } = {
         underline: true,
         content:
           "안정 상태에서 수축기와 이완기의 혈압을 측정한 값으로 고혈압은 140/90mmHg 이상을 말하며, 치료와 예방을 위해 염분 섭취를 줄이고 규칙적인 운동 및 약물 요법이 필요합니다.",
+      },
+
+      {
+        id: uuidv4(),
+        x: 150,
+        y: 655,
+        width: 100,
+        height: 70,
+        placeholder: "Enter text",
+        underline: true,
+        content: "청력검사",
+      },
+      {
+        id: uuidv4(),
+        x: 240,
+        y: 645,
+        width: 490,
+        height: 90,
+        placeholder: "Enter text",
+        underline: true,
+        content: "청력장애의 유무, 난청의 조기발견 등의 질환을 알아 낼 수 있는 검사입니다.",
       },
     ],
   },
