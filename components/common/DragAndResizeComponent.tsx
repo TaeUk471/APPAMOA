@@ -115,7 +115,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
             position: "relative",
           }}>
           {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
-          {componentType === "selectImageSet" && <SelectImageComponent data={data as SelectImageComponentData} />}
+          {componentType === "selectImageSet" && <SelectImageComponent pageId={pageId} />}
           {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
           {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
           {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}

@@ -10,9 +10,7 @@ export interface ImageComponentData extends BaseComponentData {
   url: string;
 }
 
-export interface SelectImageComponentData extends BaseComponentData {
-  url: string;
-}
+export type SelectImageComponentData = BaseComponentData;
 
 export interface DivComponentData extends BaseComponentData {
   color: string;
