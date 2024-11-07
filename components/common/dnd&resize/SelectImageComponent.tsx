@@ -1,14 +1,19 @@
 import { useRef } from "react";
 
 import useUploadImage from "@hooks/useUploadImage";
+import usePageDataStore from "store/usePageDataStore";
+import { SelectImageComponentData } from "types/componenttype";
 
-const SelectImageComponent = ({ pageId }: { pageId: string }) => {
+const SelectImageComponent = ({ data, pageId }: { data: SelectImageComponentData; pageId: string }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const pages = usePageDataStore(state => state.pages);
+  const pageInfo = pages[pageId];
 
   const uploadImage = useUploadImage();
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
+      console.log(pageInfo, data, pageId);
     }
   };
 
@@ -21,7 +26,7 @@ const SelectImageComponent = ({ pageId }: { pageId: string }) => {
         ref={fileInputRef}
         className="hidden"
         accept="image/*"
-        onChange={event => uploadImage(event, pageId)}
+        onChange={event => uploadImage(event, pageId, data.x, data.y, data.width, data.height)}
         multiple
       />
       <div>

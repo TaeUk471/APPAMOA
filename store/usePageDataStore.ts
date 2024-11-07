@@ -14,6 +14,7 @@ import {
 interface PageDataStore {
   pages: { [key: string]: PageData };
   addImageComponent: (pageId: string, url: string) => void;
+  addSelectImageComponent: (pageId: string, url: string, x: number, y: number, width: number, height: number) => void;
   addDivComponent: (pageId: string, color: string) => void;
   addTableComponent: (pageId: string, rows: number, columns: number, data: RowData[]) => void;
   addTextareaComponent: (pageId: string, placeholder: string, underline: boolean, content: string) => void;
@@ -36,6 +37,26 @@ const usePageDataStore = create<PageDataStore>(set => ({
       y: 0,
       width: 200,
       height: 100,
+      url,
+    };
+    set(state => ({
+      pages: {
+        ...state.pages,
+        [pageId]: {
+          ...state.pages[pageId],
+          imageSet: [...(state.pages[pageId]?.imageSet || []), newImage],
+        },
+      },
+    }));
+  },
+
+  addSelectImageComponent: (pageId, url, x, y, width, height) => {
+    const newImage: ImageComponentData = {
+      id: uuidv4(),
+      x: x,
+      y: y,
+      width: width,
+      height: height,
       url,
     };
     set(state => ({

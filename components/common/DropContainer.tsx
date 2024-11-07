@@ -36,6 +36,10 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(pageData);
+  }, [pageData]);
+
   const handleDragChange = (deltaX: number, deltaY: number) => {
     setContainerOffset(prevOffset => ({
       x: prevOffset.x + deltaX,

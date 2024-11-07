@@ -11,7 +11,7 @@ const UploadData = ({ pageId }: { pageId: string }) => {
         <button onClick={handleButtonClick}>
           <i
             className={
-              "fa fa-database text-[24px] pr-[14px] pl-3 py-[15.5px] text-white cursor-pointer bg-stone-700 rounded-r-2xl  "
+              "fa fa-database text-[24px] pr-[14px] pl-3 py-[15.5px] text-white cursor-pointer bg-stone-700 rounded-r-2xl"
             }
           />
         </button>

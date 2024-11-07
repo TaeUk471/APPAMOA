@@ -64,7 +64,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown); // 전역적으로 탐색
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -88,7 +88,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
         height={height}
         onResize={handleResize}
         resizeHandles={isSelected ? ["se", "sw", "ne", "nw"] : []}
-        minConstraints={componentType === "divSet" ? [80, 2] : componentType === "textareaSet" ? [80, 30] : [80, 80]}
+        minConstraints={componentType === "divSet" ? [50, 2] : componentType === "textareaSet" ? [80, 30] : [50, 50]}
         handle={(resizeHandle, ref) => (
           <div
             ref={ref}
@@ -115,7 +115,9 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
             position: "relative",
           }}>
           {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
-          {componentType === "selectImageSet" && <SelectImageComponent pageId={pageId} />}
+          {componentType === "selectImageSet" && (
+            <SelectImageComponent data={data as SelectImageComponentData} pageId={pageId} />
+          )}
           {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
           {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
           {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}

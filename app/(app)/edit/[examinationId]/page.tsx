@@ -27,7 +27,7 @@ const EditPage = () => {
 
     setUser(foundPatient);
     resetPages(foundPatient.name, foundPatient.examinationId);
-    router.push(`edit/${foundPatient.examinationId}`);
+    router.push(`${foundPatient.examinationId}`);
   }, [examinationId]);
 
   const pages = usePaginationStore(state => state.pages);

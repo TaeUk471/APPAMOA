@@ -7,7 +7,7 @@ import usePageDataStore from "store/usePageDataStore";
 const UploadTextArea = ({ pageId }: { pageId: string }) => {
   const handleUploadTextArea = usePageDataStore(state => state.addTextareaComponent);
 
-  const handleButtonClick = () => handleUploadTextArea(pageId, "데이터를 입력해주세요", false, "환자의 상태는..");
+  const handleButtonClick = () => handleUploadTextArea(pageId, "No Data Available", false, "");
 
   return (
     <div className={"fixed left-0 transition-all w-14 h-fit top-[230px] flex flex-col"}>
