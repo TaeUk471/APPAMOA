@@ -1,6 +1,6 @@
 "use client";
 
-import { notFound, useParams } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -10,30 +10,24 @@ import ElementSidebar from "@components/common/sidebar/ElementSidebar";
 import InputSidebar from "@components/common/sidebar/InputSidebar";
 import PatientList from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";
+import useSelectUserStore from "store/useSelectUserStore";
 
 const EditPage = () => {
   const { examinationId } = useParams();
-  /*const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const router = useRouter();
+  const { setUser } = useSelectUserStore();
+  const resetPages = usePaginationStore(state => state.resetPages);
 
-  const handleWheel = (event: WheelEvent) => {
-    if (event.ctrlKey) {
-      event.preventDefault();
-      setZoomLevel(prevZoom => Math.min(Math.max(prevZoom + event.deltaY * -0.001, 0.5), 2));
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, []);*/
   useEffect(() => {
     const foundPatient = PatientList.find(patient => patient.examinationId === examinationId);
 
     if (!foundPatient) {
       notFound();
     }
+
+    setUser(foundPatient);
+    resetPages(foundPatient.name, foundPatient.examinationId);
+    router.push(`edit/${foundPatient.examinationId}`);
   }, [examinationId]);
 
   const pages = usePaginationStore(state => state.pages);
@@ -42,7 +36,7 @@ const EditPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="edit-page-container" /*style={{ transform: `scale(${zoomLevel})`, transformOrigin: "center" }}*/>
+      <div className="edit-page-container">
         <div className="drag-and-drop-area">
           <DropContainer pageId={currentPage} />
         </div>

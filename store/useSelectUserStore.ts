@@ -6,7 +6,7 @@ interface SelectUserState {
 }
 
 const useSelectUserStore = create<SelectUserState>(set => ({
-  user: { examinationId: "805605462", name: "김니엘" },
+  user: { examinationId: "", name: "" },
   setUser: ({ name, examinationId }) => set({ user: { name, examinationId } }),
 }));
 
