@@ -1,15 +1,18 @@
 "use client";
 
-import React from "react";
+import { notFound, useParams } from "next/navigation";
+import React, { useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import DropContainer from "@components/common/DropContainer";
 import ElementSidebar from "@components/common/sidebar/ElementSidebar";
 import InputSidebar from "@components/common/sidebar/InputSidebar";
+import PatientList from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";
 
 const EditPage = () => {
+  const { examinationId } = useParams();
   /*const [zoomLevel, setZoomLevel] = useState<number>(1);
 
   const handleWheel = (event: WheelEvent) => {
@@ -25,6 +28,15 @@ const EditPage = () => {
       window.removeEventListener("wheel", handleWheel);
     };
   }, []);*/
+  useEffect(() => {
+    const foundPatient = PatientList.find(patient => patient.examinationId === examinationId);
+
+    if (!foundPatient) {
+      notFound();
+    } else {
+      console.log(foundPatient);
+    }
+  }, [examinationId]);
 
   const pages = usePaginationStore(state => state.pages);
   const currentPageIndex = usePaginationStore(state => state.currentPageIndex);
