@@ -7,6 +7,7 @@ export const initialPageData: { [key: string]: PageData } = {
     imageSet: [
       // { id: uuidv4(), x: 0, y: 0, width: 100, height: 100, url: "/images/고먐미.jpeg" }
     ],
+    selectImageSet: [{ id: uuidv4(), x: 0, y: 50, width: 100, height: 100, url: "/images/고먐미.jpeg" }],
     divSet: [{ id: uuidv4(), x: 11, y: 90, width: 755, height: 2, color: "black" }],
     tableSet: [
       // {
@@ -201,6 +202,7 @@ export const initialPageData: { [key: string]: PageData } = {
       { id: uuidv4(), x: 60, y: 380, width: 70, height: 70, url: "/icons/heartbeat.png" },
       { id: uuidv4(), x: 60, y: 630, width: 70, height: 70, url: "/icons/ear.png" },
     ],
+    selectImageSet: [{ id: uuidv4(), x: 0, y: 0, width: 100, height: 100, url: "/images/고먐미.jpeg" }],
     divSet: [{ id: uuidv4(), x: 45, y: 90, width: 700, height: 2, color: "blue" }],
     tableSet: [
       {

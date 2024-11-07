@@ -10,6 +10,10 @@ export interface ImageComponentData extends BaseComponentData {
   url: string;
 }
 
+export interface SelectImageComponentData extends BaseComponentData {
+  url: string;
+}
+
 export interface DivComponentData extends BaseComponentData {
   color: string;
 }
@@ -41,4 +45,5 @@ export interface PageData {
   divSet: DivComponentData[];
   tableSet: TableComponentData[];
   textareaSet: TextareaComponentData[];
+  selectImageSet: SelectImageComponentData[];
 }

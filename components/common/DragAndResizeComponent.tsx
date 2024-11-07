@@ -10,14 +10,21 @@ import {
   TableComponentData,
   TextareaComponentData,
   PageData,
+  SelectImageComponentData,
 } from "types/componenttype";
 
 import DivComponent from "./dnd&resize/DivComponent";
 import ImageComponent from "./dnd&resize/ImageComponent";
+import SelectImageComponent from "./dnd&resize/SelectImageComponent";
 import TableComponent from "./dnd&resize/TableComponent";
 import TextareaComponent from "./dnd&resize/TextareaComponent";
 
-type ComponentData = ImageComponentData | DivComponentData | TableComponentData | TextareaComponentData;
+type ComponentData =
+  | ImageComponentData
+  | SelectImageComponentData
+  | DivComponentData
+  | TableComponentData
+  | TextareaComponentData;
 
 interface DraggableComponentProps {
   data: ComponentData;
@@ -108,6 +115,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
             position: "relative",
           }}>
           {componentType === "imageSet" && <ImageComponent data={data as ImageComponentData} />}
+          {componentType === "selectImageSet" && <SelectImageComponent data={data as SelectImageComponentData} />}
           {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
           {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
           {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}

@@ -33,8 +33,6 @@ const EditPage = () => {
 
     if (!foundPatient) {
       notFound();
-    } else {
-      console.log(foundPatient);
     }
   }, [examinationId]);
 

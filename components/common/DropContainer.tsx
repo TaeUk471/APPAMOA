@@ -67,6 +67,15 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
           containerOffset={containerOffset}
         />
       ))}
+      {pageData?.selectImageSet?.map(selectimage => (
+        <DraggableResizableComponent
+          key={selectimage.id}
+          data={selectimage}
+          componentType="selectImageSet"
+          pageId={pageId}
+          containerOffset={containerOffset}
+        />
+      ))}
       {pageData?.divSet?.map(div => (
         <DraggableResizableComponent
           key={div.id}
