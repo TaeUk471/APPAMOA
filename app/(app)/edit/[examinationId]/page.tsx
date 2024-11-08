@@ -7,7 +7,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import DropContainer from "@components/common/DropContainer";
 import ElementSidebar from "@components/common/sidebar/ElementSidebar";
-import InputSidebar from "@components/common/sidebar/InputSidebar";
+import RightSidebar from "@components/common/sidebar/RightSidebar";
 import PatientList from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";
 import useSelectUserStore from "store/useSelectUserStore";
@@ -20,11 +20,9 @@ const EditPage = () => {
 
   useEffect(() => {
     const foundPatient = PatientList.find(patient => patient.examinationId === examinationId);
-
     if (!foundPatient) {
       notFound();
     }
-
     setUser(foundPatient);
     resetPages(foundPatient.name, foundPatient.examinationId);
     router.push(`${foundPatient.examinationId}`);
@@ -42,7 +40,7 @@ const EditPage = () => {
         </div>
       </div>
       <ElementSidebar pageId={currentPage} />
-      <InputSidebar pageId={currentPage} />
+      <RightSidebar pageId={currentPage} />
     </DndProvider>
   );
 };
