@@ -1,7 +1,45 @@
-import useToggle from "@hooks/useToggle";
+import { useEffect, useState } from "react";
 
-const InputSidebar = () => {
-  const { isOpen: isSidebarOpen, toggle: toggleSidebar } = useToggle(); // 사이드바용 토글 상태
+import useToggle from "@hooks/useToggle";
+import usePageDataStore from "store/usePageDataStore";
+import useSelectionStore from "store/useSelectionStore";
+import {
+  DivComponentData,
+  ImageComponentData,
+  SelectImageComponentData,
+  TableComponentData,
+  TextareaComponentData,
+} from "types/componenttype";
+
+const InputSidebar = ({ pageId }: { pageId: string }) => {
+  const { isOpen: isSidebarOpen, toggle: toggleSidebar } = useToggle();
+  const selectedComponentId = useSelectionStore(state => state.selectedComponentId);
+  const pages = usePageDataStore(state => state.pages);
+  const pageData = pages[pageId];
+  const [selectedComponentData, setSelectedComponentData] = useState<
+    ImageComponentData | DivComponentData | TableComponentData | TextareaComponentData | SelectImageComponentData
+  >();
+
+  useEffect(() => {
+    if (selectedComponentId && pageData) {
+      const sets = [
+        pageData.imageSet,
+        pageData.divSet,
+        pageData.tableSet,
+        pageData.textareaSet,
+        pageData.selectImageSet,
+      ];
+      sets.some(set => {
+        const foundComponent = set.find(item => item.id === selectedComponentId);
+        if (foundComponent) {
+          setSelectedComponentData(foundComponent);
+          return true;
+        }
+        return false;
+      });
+    }
+  }, [selectedComponentId, pageData]);
+
   return (
     <div
       className={`bg-purple-700 fixed top-25 right-0 transition-all
@@ -11,16 +49,14 @@ const InputSidebar = () => {
           {isSidebarOpen ? <i className="fas fa-times text-white" /> : <i className="fas fa-bars text-white" />}
         </button>
       </div>
-      {isSidebarOpen && (
+      {isSidebarOpen && selectedComponentData && (
         <div
-          className={"flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-200"}
-        />
-      )}
-      {/* Footer */}
-      {isSidebarOpen && (
-        <div className="flex gap-4 p-4 bg-blue-500 text-white">
-          <i className="fas fa-user text-white" />
-          <p>Footer Content</p>
+          className={"flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-200"}>
+          {Object.entries(selectedComponentData).map(([key, value]) => (
+            <p key={key}>
+              <strong>{key}:</strong> {JSON.stringify(value)}
+            </p>
+          ))}
         </div>
       )}
     </div>
