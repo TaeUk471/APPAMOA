@@ -38,10 +38,15 @@ export interface TextareaComponentData extends BaseComponentData {
   content: string;
 }
 
+export interface PreformattedComponentData extends BaseComponentData {
+  content: string;
+}
+
 export interface PageData {
   imageSet: ImageComponentData[];
   divSet: DivComponentData[];
   tableSet: TableComponentData[];
   textareaSet: TextareaComponentData[];
   selectImageSet: SelectImageComponentData[];
+  preformattedSet: PreformattedComponentData[];
 }

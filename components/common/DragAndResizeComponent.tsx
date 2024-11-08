@@ -11,10 +11,12 @@ import {
   TextareaComponentData,
   PageData,
   SelectImageComponentData,
+  PreformattedComponentData,
 } from "types/componenttype";
 
 import DivComponent from "./dnd&resize/DivComponent";
 import ImageComponent from "./dnd&resize/ImageComponent";
+import PreformattedComponent from "./dnd&resize/PreformattedComponent";
 import SelectImageComponent from "./dnd&resize/SelectImageComponent";
 import TableComponent from "./dnd&resize/TableComponent";
 import TextareaComponent from "./dnd&resize/TextareaComponent";
@@ -24,7 +26,8 @@ type ComponentData =
   | SelectImageComponentData
   | DivComponentData
   | TableComponentData
-  | TextareaComponentData;
+  | TextareaComponentData
+  | PreformattedComponentData;
 
 interface DraggableComponentProps {
   data: ComponentData;
@@ -121,6 +124,7 @@ const DraggableComponent = ({ data, componentType, pageId }: DraggableComponentP
           {componentType === "divSet" && <DivComponent data={data as DivComponentData} />}
           {componentType === "tableSet" && <TableComponent data={data as TableComponentData} />}
           {componentType === "textareaSet" && <TextareaComponent data={data as TextareaComponentData} />}
+          {componentType === "preformattedSet" && <PreformattedComponent data={data as PreformattedComponentData} />}
         </div>
       </Resizable>
     </div>

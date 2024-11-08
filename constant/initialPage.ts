@@ -945,5 +945,15 @@ export const initialPageData: { [key: string]: PageData } = {
         content: "",
       },
     ],
+    preformattedSet: [
+      {
+        id: uuidv4(),
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 80,
+        content: "와따마 된다잉",
+      },
+    ],
   },
 };

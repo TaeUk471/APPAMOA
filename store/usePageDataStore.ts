@@ -6,6 +6,7 @@ import {
   DivComponentData,
   ImageComponentData,
   PageData,
+  PreformattedComponentData,
   RowData,
   TableComponentData,
   TextareaComponentData,
@@ -18,6 +19,7 @@ interface PageDataStore {
   addDivComponent: (pageId: string, color: string) => void;
   addTableComponent: (pageId: string, rows: number, columns: number, data: RowData[]) => void;
   addTextareaComponent: (pageId: string, placeholder: string, underline: boolean, content: string) => void;
+  addPreformattedComponent: (pageId: string, content: string) => void;
   deleteComponent: (pageId: string, componentType: keyof PageData, componentId: string) => void;
   updateComponent: <ComponentType extends keyof PageData>(
     pageId: string,
@@ -35,8 +37,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
       id: uuidv4(),
       x: 0,
       y: 0,
-      width: 200,
-      height: 100,
+      width: 50,
+      height: 50,
       url,
     };
     set(state => ({
@@ -95,8 +97,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
       id: uuidv4(),
       x: 10,
       y: 200,
-      width: rows * 30,
-      height: 200,
+      width: rows * 100,
+      height: columns * 50,
       rows,
       columns,
       data:
@@ -138,6 +140,26 @@ const usePageDataStore = create<PageDataStore>(set => ({
         [pageId]: {
           ...state.pages[pageId],
           textareaSet: [...(state.pages[pageId]?.textareaSet || []), newTextarea],
+        },
+      },
+    }));
+  },
+
+  addPreformattedComponent: (pageId, content = "") => {
+    const newPreformattedText: PreformattedComponentData = {
+      id: uuidv4(),
+      x: 10,
+      y: 400,
+      width: 250,
+      height: 100,
+      content,
+    };
+    set(state => ({
+      pages: {
+        ...state.pages,
+        [pageId]: {
+          ...state.pages[pageId],
+          preformattedSet: [...(state.pages[pageId]?.preformattedSet || []), newPreformattedText],
         },
       },
     }));

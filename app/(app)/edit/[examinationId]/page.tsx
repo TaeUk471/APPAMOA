@@ -34,7 +34,7 @@ const EditPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="edit-page-container">
+      <div className="edit-page-container ">
         <div className="drag-and-drop-area">
           <DropContainer pageId={currentPage} />
         </div>

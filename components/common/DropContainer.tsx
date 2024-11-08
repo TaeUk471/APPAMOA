@@ -107,6 +107,15 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
           containerOffset={containerOffset}
         />
       ))}
+      {pageData?.preformattedSet?.map(preformattedText => (
+        <DraggableResizableComponent
+          key={preformattedText.id}
+          data={preformattedText}
+          componentType="preformattedSet"
+          pageId={pageId}
+          containerOffset={containerOffset}
+        />
+      ))}
     </div>
   );
 };

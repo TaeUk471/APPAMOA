@@ -5,10 +5,13 @@ const useToggle = (initialState: boolean = false) => {
   const close = useCallback(() => {
     setIsOpen(false);
   }, []);
+  const open = useCallback(() => {
+    setIsOpen(true);
+  }, []);
   const toggle = useCallback(() => {
     setIsOpen(prev => !prev);
   }, []);
-  return { isOpen, toggle, close };
+  return { isOpen, toggle, close, open };
 };
 
 export default useToggle;
