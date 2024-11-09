@@ -21,7 +21,7 @@ const UploadImage = ({ pageId }: { pageId: string }) => {
           ref={fileInputRef}
           className="hidden"
           accept="image/*"
-          onChange={event => uploadImage(event, pageId)}
+          onChange={event => uploadImage({ event, pageId })}
           multiple
         />
         <button onClick={handleButtonClick}>

@@ -5,6 +5,7 @@ import usePageDataStore from "store/usePageDataStore";
 import { SelectImageComponentData } from "types/componenttype";
 
 const SelectImageComponent = ({ data, pageId }: { data: SelectImageComponentData; pageId: string }) => {
+  const { x, y, width, height } = data;
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const pages = usePageDataStore(state => state.pages);
   const pageInfo = pages[pageId];
@@ -26,7 +27,7 @@ const SelectImageComponent = ({ data, pageId }: { data: SelectImageComponentData
         ref={fileInputRef}
         className="hidden"
         accept="image/*"
-        onChange={event => uploadImage(event, pageId, data.x, data.y, data.width, data.height)}
+        onChange={event => uploadImage({ event, pageId, x, y, width, height })}
         multiple
       />
       <div>

@@ -76,7 +76,7 @@ const InputSidebar = ({ pageId }: { pageId: string }) => {
   return (
     <div
       className={`bg-purple-700 fixed top-25 right-0 transition-all
-    ${isSidebarOpen ? "w-[300px] h-fit top-[75px] bg-purple-400" : "w-14 h-fit top-[80px]"} px-4 py-3 rounded-l-xl flex flex-col`}>
+    ${isSidebarOpen ? "w-[250px] h-fit top-[75px] bg-purple-300" : "w-14 h-fit top-[80px]"} px-4 py-3 rounded-l-xl flex flex-col`}>
       <div className={"flex justify-between items-center"}>
         <button onClick={toggleSidebar} className="cursor-pointer flex items-center justify-center h-8">
           {isSidebarOpen ? <i className="fas fa-times text-white" /> : <i className="fas fa-bars text-white" />}

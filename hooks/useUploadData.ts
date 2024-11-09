@@ -1,25 +1,45 @@
 import usePageDataStore from "store/usePageDataStore";
+import { PageData } from "types/componenttype";
 
-const useUploadImage = () => {
-  const handleUploadImage = usePageDataStore(state => state.addImageComponent);
+interface UseUploadJsonParams {
+  event: React.ChangeEvent<HTMLInputElement>;
+  pageId: string;
+  componentId: string;
+  componentType: keyof PageData;
+}
 
-  const uploadImage = (event: React.ChangeEvent<HTMLInputElement>, pageId: string) => {
+const useUploadJson = () => {
+  const handleUploadData = usePageDataStore(state => state.updateComponent);
+
+  const uploadJson = ({ event, pageId, componentId, componentType }: UseUploadJsonParams) => {
     const files = event.target.files;
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        if (file.type.startsWith("json/")) {
-          const imageUrl = URL.createObjectURL(file);
-          handleUploadImage(pageId, imageUrl);
+        if (file.type === "application/json") {
+          const reader = new FileReader();
+
+          reader.onload = e => {
+            if (e.target?.result) {
+              try {
+                const jsonData = JSON.parse(e.target.result as string);
+                handleUploadData(pageId, componentType, componentId, jsonData);
+              } catch (error) {
+                console.error("Failed to parse JSON file.", error);
+              }
+            }
+          };
+
+          reader.readAsText(file);
         } else {
-          alert(".json 형식의 파일만 선택할 수 있습니다.");
+          alert("Only .json files are allowed.");
         }
       }
     }
   };
 
-  return uploadImage;
+  return uploadJson;
 };
 
-export default useUploadImage;
+export default useUploadJson;
