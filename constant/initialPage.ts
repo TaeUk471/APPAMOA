@@ -46,15 +46,14 @@ export const initialPageData: { [key: string]: PageData } = {
       //   columns: 3,
       // },
     ],
-    textareaSet: [
+    textareaSet: [],
+    preformattedSet: [
       {
         id: uuidv4(),
         x: 50,
         y: 60,
         width: 85,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "종합검진",
       },
       {
@@ -63,8 +62,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 60,
         width: 155,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "등록번호 01814444",
       },
       {
@@ -73,8 +70,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 60,
         width: 130,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "일자 2024.05.12",
       },
       {
@@ -83,8 +78,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 60,
         width: 120,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "성명 김모아",
       },
       {
@@ -93,8 +86,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 110,
         width: 705,
         height: 70,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[신체계측]\n과체중입니다. 고혈압, 당뇨병, 지방간, 관절염, 심혈관 질환 및 악성 질환의 위험성이 증가합니다. 식이 조절 및 운동으로 체중 및 체지방을 감량하시기 바랍니다.",
       },
@@ -104,8 +95,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 190,
         width: 650,
         height: 70,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[허리둘레]\n복부 비만입니다. 복부내장지방 감량을 위해 지속적인 식이 조절 및 운동으로 관리하시길 바랍니다.",
       },
@@ -115,8 +104,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 270,
         width: 630,
         height: 72,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[혈압 측정 - 저혈압]\n혈압이 낮게 측정되었습니다. 어지러움 등의 증상이 있을 경우 심장내과에서 진료를 받으시길 바랍니다.",
       },
@@ -126,8 +113,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 350,
         width: 190,
         height: 240,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[청력 검사 - 정상]\n\n[폐기능 검사 - 정상]\n\n[시력 검사 - 정상]\n\n[안압 검사 - 정상]\n\n[안저 검사 - 정상]\n\n[혈당 검사 - 정상]",
       },
@@ -137,8 +122,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 600,
         width: 630,
         height: 90,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[콜레스테롤 검사 - 이상지질혈증]\n이상지질혈증은 동맥경화증, 고혈압, 뇌혈관질환, 허혈성 심질환 등의 위험 요인이 됩니다. 저지방 식이, 운동, 적정 체중 유지, 금주 및 금연과 같은 생활 습관의 개선이 필요하며 향후 약물 치료가 필요할 수 있습니다. 상담을 원하시면 내분비내과 진료를 받으시기 바랍니다.",
       },
@@ -148,8 +131,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 700,
         width: 630,
         height: 50,
-        placeholder: "Enter text",
-        underline: true,
         content: "[간기능 검사]\n간 기능 검사상 이상 소견은 없습니다",
       },
       {
@@ -158,8 +139,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 760,
         width: 630,
         height: 60,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[간염 검사]\n- A형 감염 항체 양성으로, A형간염 예방접종은 필요가 없습니다. \n- B형 감염 항체 양성으로, A형간염 예방접종은 필요가 없습니다",
       },
@@ -169,8 +148,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 840,
         width: 630,
         height: 60,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "[신장 기능, 기타 전해질 검사]\n전해질검사 결과 인산염(P) 수치가 높습니다. 신장 질환, 과다한 인 섭취, 과다한 칼슘 배출, 비타민 D 중독 등의 원인이 있을 수 있습니다. 재검사 또는 내과 진료를 받으시기 바랍니다",
       },
@@ -180,8 +157,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 920,
         width: 630,
         height: 40,
-        placeholder: "Enter text",
-        underline: true,
         content: "[갑상선 기능 검사]\n- 갑상선 기능 검사상 특별한 이상소견은 없습니다.",
       },
       {
@@ -190,8 +165,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 980,
         width: 630,
         height: 40,
-        placeholder: "Enter text",
-        underline: true,
         content: "[일반 혈액 검사]\n- 일반 혈액 검사상 빈혈은 없으며, 백혈구 및 혈소판 수치도 특별한 이상은 없습니다.",
       },
     ],
@@ -439,15 +412,14 @@ export const initialPageData: { [key: string]: PageData } = {
         columns: 5,
       },
     ],
-    textareaSet: [
+    textareaSet: [],
+    preformattedSet: [
       {
         id: uuidv4(),
         x: 195,
         y: 60,
         width: 155,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "등록번호 01814444",
       },
       {
@@ -456,8 +428,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 60,
         width: 130,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "일자 2024.05.12",
       },
       {
@@ -466,8 +436,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 60,
         width: 120,
         height: 30,
-        placeholder: "Enter text",
-        underline: true,
         content: "성명 김모아",
       },
 
@@ -477,20 +445,16 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 130,
         width: 100,
         height: 70,
-        placeholder: "Enter text",
-        underline: true,
         content: "신체계측 및\n체성분",
       },
       {
         id: uuidv4(),
         x: 240,
         y: 110,
-        width: 530,
-        height: 90,
-        placeholder: "Enter text",
-        underline: true,
+        width: 553,
+        height: 80,
         content:
-          "체성분검사, 키와 몸무게 및 체질량 지수를 계산하여 저체중과 비만 여부를\n알아보고, 허리둘레를 측정하여 복부비만 여부와 근육량 등을 알 수 있습니다.\n\n저체중:18.5미만 정상:18.5~23 과체중:23~25 비만:25~30 고도비만:30이상",
+          "체성분검사, 키와 몸무게 및 체질량 지수를 계산하여 저체중과 비만 여부를 알아보고, 허리둘레를 측정하여 복부비만 여부와 근육량 등을 알 수 있습니다.\n저체중:18.5미만 정상:18.5~23 과체중:23~25 비만:25~30 고도비만:30이상",
       },
 
       {
@@ -499,8 +463,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 405,
         width: 100,
         height: 70,
-        placeholder: "Enter text",
-        underline: true,
         content: "혈압",
       },
       {
@@ -509,8 +471,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 390,
         width: 490,
         height: 90,
-        placeholder: "Enter text",
-        underline: true,
         content:
           "안정 상태에서 수축기와 이완기의 혈압을 측정한 값으로 고혈압은 140/90mmHg 이상을 말하며, 치료와 예방을 위해 염분 섭취를 줄이고 규칙적인 운동 및 약물 요법이 필요합니다.",
       },
@@ -521,8 +481,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 655,
         width: 100,
         height: 70,
-        placeholder: "Enter text",
-        underline: true,
         content: "청력검사",
       },
       {
@@ -531,8 +489,6 @@ export const initialPageData: { [key: string]: PageData } = {
         y: 645,
         width: 490,
         height: 90,
-        placeholder: "Enter text",
-        underline: true,
         content: "청력장애의 유무, 난청의 조기발견 등의 질환을 알아 낼 수 있는 검사입니다.",
       },
     ],
@@ -604,6 +560,7 @@ export const initialPageData: { [key: string]: PageData } = {
         content: "",
       },
     ],
+    preformattedSet: [],
   },
   김복자4312167852: {
     imageSet: [],
@@ -945,15 +902,6 @@ export const initialPageData: { [key: string]: PageData } = {
         content: "",
       },
     ],
-    preformattedSet: [
-      {
-        id: uuidv4(),
-        x: 0,
-        y: 0,
-        width: 100,
-        height: 80,
-        content: "와따마 된다잉",
-      },
-    ],
+    preformattedSet: [],
   },
 };

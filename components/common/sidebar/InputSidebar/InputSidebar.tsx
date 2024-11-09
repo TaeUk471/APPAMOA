@@ -7,6 +7,7 @@ import useSelectionStore from "store/useSelectionStore";
 import {
   DivComponentData,
   ImageComponentData,
+  PreformattedComponentData,
   SelectImageComponentData,
   TableComponentData,
   TextareaComponentData,
@@ -19,12 +20,23 @@ const InputSidebar = ({ pageId }: { pageId: string }) => {
   const pageData = pages[pageId];
   const updateComponent = usePageDataStore(state => state.updateComponent);
   const [selectedComponentData, setSelectedComponentData] = useState<
-    ImageComponentData | DivComponentData | TableComponentData | TextareaComponentData | SelectImageComponentData
+    | ImageComponentData
+    | DivComponentData
+    | TableComponentData
+    | TextareaComponentData
+    | SelectImageComponentData
+    | PreformattedComponentData
   >();
 
   useEffect(() => {
     if (selectedComponentId && pageData) {
-      const sets = [pageData.imageSet, pageData.divSet, pageData.tableSet, pageData.textareaSet];
+      const sets = [
+        pageData.imageSet,
+        pageData.divSet,
+        pageData.tableSet,
+        pageData.textareaSet,
+        pageData.preformattedSet,
+      ];
       sets.some(set => {
         const foundComponent = set.find(item => item.id === selectedComponentId);
         if (foundComponent) {
