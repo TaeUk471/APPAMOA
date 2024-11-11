@@ -150,8 +150,8 @@ const usePageDataStore = create<PageDataStore>(set => ({
       id: uuidv4(),
       x: 10,
       y: 400,
-      width: 250,
-      height: 100,
+      width: 770,
+      height: 400,
       content,
     };
     set(state => ({

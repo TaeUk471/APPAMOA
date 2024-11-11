@@ -1,17 +1,17 @@
+import processTableData from "@utils/processTableData";
 import usePageDataStore from "store/usePageDataStore";
-import { PageData } from "types/componenttype";
 
 interface UseUploadJsonParams {
   event: React.ChangeEvent<HTMLInputElement>;
   pageId: string;
-  componentId: string;
-  componentType: keyof PageData;
+  componentType: "table" | "text";
 }
 
 const useUploadJson = () => {
-  const handleUploadData = usePageDataStore(state => state.updateComponent);
+  const handleUploadTable = usePageDataStore(state => state.addTableComponent);
+  const handleUploadPreformattedText = usePageDataStore(state => state.addPreformattedComponent);
 
-  const uploadJson = ({ event, pageId, componentId, componentType }: UseUploadJsonParams) => {
+  const uploadJson = ({ event, pageId, componentType }: UseUploadJsonParams) => {
     const files = event.target.files;
 
     if (files) {
@@ -24,7 +24,14 @@ const useUploadJson = () => {
             if (e.target?.result) {
               try {
                 const jsonData = JSON.parse(e.target.result as string);
-                handleUploadData(pageId, componentType, componentId, jsonData);
+
+                if (componentType === "table") {
+                  const { rows, columns, data } = processTableData(jsonData);
+                  handleUploadTable(pageId, rows, columns, data);
+                } else if (componentType === "text") {
+                  const textData = jsonData.text;
+                  handleUploadPreformattedText(pageId, textData);
+                }
               } catch (error) {
                 console.error("Failed to parse JSON file.", error);
               }

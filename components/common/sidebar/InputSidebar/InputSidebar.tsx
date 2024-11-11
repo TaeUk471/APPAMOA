@@ -31,18 +31,20 @@ const InputSidebar = ({ pageId }: { pageId: string }) => {
   useEffect(() => {
     if (selectedComponentId && pageData) {
       const sets = [
-        pageData.imageSet,
-        pageData.divSet,
-        pageData.tableSet,
-        pageData.textareaSet,
-        pageData.preformattedSet,
+        pageData.imageSet || [],
+        pageData.divSet || [],
+        pageData.tableSet || [],
+        pageData.textareaSet || [],
+        pageData.preformattedSet || [],
       ];
       sets.some(set => {
-        const foundComponent = set.find(item => item.id === selectedComponentId);
-        if (foundComponent) {
-          setSelectedComponentData(foundComponent);
-          doOpen();
-          return true;
+        if (Array.isArray(set)) {
+          const foundComponent = set.find(item => item.id === selectedComponentId);
+          if (foundComponent) {
+            setSelectedComponentData(foundComponent);
+            doOpen();
+            return true;
+          }
         }
         return false;
       });
