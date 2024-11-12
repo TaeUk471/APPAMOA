@@ -1,0 +1,69 @@
+"use client";
+
+import usePaginationStore from "store/usePaginationStore";
+import useSelectUserStore from "store/useSelectUserStore";
+
+export default function Pagination() {
+  const pages = usePaginationStore(state => state.pages);
+  const currentPageIndex = usePaginationStore(state => state.currentPageIndex);
+  const setCurrentPageIndex = usePaginationStore(state => state.setCurrentPageIndex);
+  const addPage = usePaginationStore(state => state.addPage);
+  const removeLastPage = usePaginationStore(state => state.removeLastPage);
+  const user = useSelectUserStore(state => state.user);
+
+  const totalPage = pages.length > 3 ? pages.length : 3;
+  const range = 1;
+
+  const handlePageChange = (newIndex: number) => {
+    if (newIndex >= 0 && newIndex < totalPage) {
+      setCurrentPageIndex(newIndex);
+    }
+  };
+
+  const pageList: (string | number)[] = [];
+  for (let i = 1; i <= totalPage; i++) {
+    if (i === 1 || i === totalPage || (i >= currentPageIndex + 1 - range && i <= currentPageIndex + 1 + range)) {
+      pageList.push(i);
+    } else if (pageList[pageList.length - 1] !== "...") {
+      pageList.push("...");
+    }
+  }
+
+  return (
+    <nav className="flex w-[450px] items-center justify-between gap-4">
+      <button className="btn-common btn-hover" onClick={removeLastPage}>
+        {"-"}
+      </button>
+      <ul className="flex gap-2 justify-between w-[360px]">
+        <button
+          className="btn-common btn-hover disabled:opacity-50"
+          disabled={currentPageIndex === 0}
+          onClick={() => handlePageChange(currentPageIndex - 1)}>
+          &laquo;
+        </button>
+        <div className="flex gap-2">
+          {pageList.map((page, index) => (
+            <li key={index} className={`text-xl font-black ${page === currentPageIndex + 1 ? "text-purple-600" : ""}`}>
+              {typeof page === "number" ? (
+                <button onClick={() => handlePageChange(page - 1)} className="btn-common btn-hover shadow-md">
+                  {page}
+                </button>
+              ) : (
+                <span className="flex px-4 py-2 text-center">{page}</span>
+              )}
+            </li>
+          ))}
+        </div>
+        <button
+          className="btn-common btn-hover disabled:opacity-50"
+          disabled={currentPageIndex === totalPage - 1}
+          onClick={() => handlePageChange(currentPageIndex + 1)}>
+          &raquo;
+        </button>
+      </ul>
+      <button className="btn-common btn-hover" onClick={() => addPage(user.name, user.examinationId)}>
+        {"+"}
+      </button>
+    </nav>
+  );
+}
