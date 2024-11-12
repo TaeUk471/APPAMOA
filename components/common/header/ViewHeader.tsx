@@ -13,7 +13,7 @@ import Pagination from "../Pagination";
 const EditHeader = () => {
   return (
     <>
-      <div className="relative flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-purple-100">
+      <div className="sticky top-0 right-0 z-30 flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-purple-100">
         <Link href={"/"} className="cursor-pointer z-10">
           <Image
             src={"/images/APPAMOA.png"}
