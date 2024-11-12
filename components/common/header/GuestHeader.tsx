@@ -12,30 +12,21 @@ const GuestHeader = () => {
 
   return (
     <>
-      <header className="flex h-[70px] bg-white items-center justify-around shadow-md p-4 border-t-4 border-green-700">
-        {/** 이건 로고 */}
+      <header className="flex h-[70px] bg-purple-50 items-center justify-between shadow-md p-4 border-t-4 border-purple-700">
         <div className="flex items-center gap-6">
-          <div className="relative w-14 h-14 overflow-hidden rounded-full border-2 border-white shadow-lg">
-            <Image src="/image/Main_Logo.webp" layout="fill" objectFit="cover" alt="로고" />
+          <div className="relative w-14 h-14 overflow-hidden rounded-full border-4 border-purple-500 shadow-lg">
+            <Image src="/images/APPAMOA.png" layout="fill" objectFit="cover" alt="로고" />
           </div>
-          <span className="text-black font-bold text-4xl drop-shadow-lg font-roboto">T-Load</span>
+          <span className="text-black font-bold text-4xl drop-shadow-lg font-roboto">APPAMOA</span>
         </div>
 
         <div className="flex gap-6 lg:gap-24">
-          {/** 이건 navs */}
           <nav className="relative">
             <button
               onClick={toggleDropdown}
               className="p-2 text-black font-bold bg-white bg-opacity-20 rounded-md hover:bg-opacity-30 transition-all cursor-pointer">
               Contact US
             </button>
-            {isDropdownOpen && (
-              <ul className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg">
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">태욱</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">현진</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">연락해!</li>
-              </ul>
-            )}
           </nav>
 
           {/** 이건 로그인 회원가입 버튼들 */}

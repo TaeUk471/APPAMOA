@@ -3,27 +3,27 @@
 const bannerImageList = [
   {
     title: "브라질 리오",
-    imageUrl: "/image/브라질 리오.jpg",
+    imageUrl: "/images/고먐미.jpeg",
     description: "브라질에서 멋진 석양을 즐겨볼까요?",
   },
   {
     title: "아이슬란드",
-    imageUrl: "/image/아이슬란드 블랙 샌드 비치.jpg",
+    imageUrl: "/images/고먐미.jpeg",
     description: "밤이 오지 않는 바다는 어때요?",
   },
   {
     title: "이탈리아",
-    imageUrl: "/image/이탈리아.jpg",
+    imageUrl: "/images/고먐미.jpeg",
     description: "지중해에서 추억을 새겨보는건요?",
   },
   {
     title: "일본 교토",
-    imageUrl: "/image/일본 교토.jpg",
+    imageUrl: "/images/고먐미.jpeg",
     description: "가깝지만 먼나라 일본 이 기회에?",
   },
   {
     title: "독일",
-    imageUrl: "/image/독일 성.jpg",
+    imageUrl: "/images/고먐미.jpeg",
     description: "음하하 내가 이 성의 성주다!",
   },
 ];
@@ -113,10 +113,6 @@ const Banner = () => {
 
   return (
     <div className="relative h-full min-h-[240px] w-full overflow-hidden">
-      <div className="flex-center text-green-700 font-poppins font-bold text-[50px] flex-col gap-8 mt-24 mb-16">
-        <p>당신만의 추억을 Load하고 싶고</p>
-        <p>걷고 싶은 Load는 어디신가요?</p>
-      </div>
       <div
         ref={bannerContainerRef}
         className="flex h-full min-h-[240px] overflow-hidden"
