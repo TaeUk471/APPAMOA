@@ -23,13 +23,12 @@ const GuestHeader = () => {
 
         <div className="flex gap-6">
           <Link href={"/signin"}>
-            <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-500 hover:text-black transition-colors duration-300">
-              <p className="text-stone-200 font-bold">Join</p>
-              {/* <i className="fa fa-arrow-right text-lg text-white" /> */}
+            <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-200 transition-colors duration-300">
+              <p className="text-stone-200 font-bold hover:text-black">Join</p>
             </button>
           </Link>
-          <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-500 hover:text-black transition-colors duration-300">
-            <i className="fa fa-bars text-3xl font-bold text-stone-200" />
+          <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-200 hover:text-black transition-colors duration-300">
+            <i className="fa fa-bars text-3xl font-bold text-stone-200 hover:text-black" />
           </button>
         </div>
       </header>

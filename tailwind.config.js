@@ -54,7 +54,7 @@ export default {
       },
       screens: {
         tb: "768px",
-        lg: "1024px",
+        pc: "1024px",
       },
     },
   },

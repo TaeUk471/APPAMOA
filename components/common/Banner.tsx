@@ -1,35 +1,7 @@
-"use client";
-
-const bannerImageList = [
-  {
-    title: "브라질 리오",
-    imageUrl: "/images/고먐미.jpeg",
-    description: "브라질에서 멋진 석양을 즐겨볼까요?",
-  },
-  {
-    title: "아이슬란드",
-    imageUrl: "/images/고먐미.jpeg",
-    description: "밤이 오지 않는 바다는 어때요?",
-  },
-  {
-    title: "이탈리아",
-    imageUrl: "/images/고먐미.jpeg",
-    description: "지중해에서 추억을 새겨보는건요?",
-  },
-  {
-    title: "일본 교토",
-    imageUrl: "/images/고먐미.jpeg",
-    description: "가깝지만 먼나라 일본 이 기회에?",
-  },
-  {
-    title: "독일",
-    imageUrl: "/images/고먐미.jpeg",
-    description: "음하하 내가 이 성의 성주다!",
-  },
-];
-
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
+
+import { bannerImageList } from "constant/BannerData";
 
 const Banner = () => {
   const bannerContainerRef = useRef<HTMLDivElement>(null);
@@ -37,6 +9,7 @@ const Banner = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const [bannerWidth, setBannerWidth] = useState(0);
+  const bannerList = bannerImageList;
 
   const clearExistingInterval = useCallback(() => {
     if (intervalRef.current) {
@@ -112,37 +85,39 @@ const Banner = () => {
   }, [currentIndex, bannerWidth]);
 
   return (
-    <div className="relative h-full min-h-[240px] w-full overflow-hidden">
-      <div
-        ref={bannerContainerRef}
-        className="flex h-full min-h-[240px] overflow-hidden"
-        style={{ width: `${100 * bannerImageList.length}` }}>
-        {bannerImageList.map((image, idx) => (
-          <div key={idx} className="relative w-full flex-none">
-            <Image className="absolute object-cover" fill src={image.imageUrl} alt="Banner_image" priority />
-            <div className="absolute h-full w-full bg-black opacity-40" />
-            <div className="absolute h-full w-full p-4 text-white top-[10%] left-[10%]">
-              <div className="flex flex-col gap-6">
-                <div
-                  className="text-[50px] font-bold font-roboto"
-                  style={{ textShadow: "0 0 3px black, 0 0 4px white" }}>
-                  {image.title}
+    <div className="flex justify-center tb:justify-end tb:mr-[20px] pc:mr-[80px] mt-[40px] tb:mt-[160px]">
+      <div className="relative w-full h-[400px] tb:w-[500px] tb:h-[500px] pc:w-[1024px] pc:h-[500px]">
+        <div
+          ref={bannerContainerRef}
+          className="flex h-full min-h-[240px] overflow-hidden rounded-lg tb:rounded-full"
+          style={{ width: `${100 * bannerList.length}` }}>
+          {bannerList.map((image, idx) => (
+            <div key={idx} className="relative w-full flex-none">
+              <Image className="absolute object-cover" fill src={image.imageUrl} alt="Banner_image" priority />
+              <div className="absolute h-full w-full bg-black opacity-40" />
+              <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-25%]">
+                <div className="flex flex-col gap-6">
+                  <div
+                    className="text-[50px] font-bold font-roboto"
+                    style={{ textShadow: "0 0 3px black, 0 0 4px white" }}>
+                    {image.title}
+                  </div>
+                  <div className="text-[20px] font-roboto ml-3">{image.description}</div>
                 </div>
-                <div className="text-[20px] font-roboto ml-5">{image.description}</div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
 
-        <div
-          className="absolute left-4 top-2/3 -translate-y-1/2 cursor-pointer bg-white bg-opacity-50 p-4 border-2 rounded-lg text-white"
-          onClick={() => scroll("left")}>
-          {"<"}
-        </div>
-        <div
-          className="absolute right-4 top-2/3 -translate-y-1/2 cursor-pointer bg-white bg-opacity-50 p-4 border-2 rounded-lg text-white"
-          onClick={() => scroll("right")}>
-          {">"}
+          <div
+            className="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer bg-white bg-opacity-50 p-4 border-2 rounded-lg text-white"
+            onClick={() => scroll("left")}>
+            {"<"}
+          </div>
+          <div
+            className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer bg-white bg-opacity-50 p-4 border-2 rounded-lg text-white"
+            onClick={() => scroll("right")}>
+            {">"}
+          </div>
         </div>
       </div>
     </div>
