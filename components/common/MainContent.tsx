@@ -7,17 +7,20 @@ const features = [
   {
     image: "/images/Article_1.avif",
     title: "Dashboard Overview",
-    description: "Access a detailed dashboard displaying comprehensive health data and insights at a glance.",
+    description:
+      "Gain unparalleled access to an intuitive and visually compelling dashboard. Effortlessly explore and analyze comprehensive health data and key insights, tailored to present a holistic view of patient records. The dashboard simplifies complex information, making it accessible and actionable for healthcare professionals and patients alike.",
   },
   {
     image: "/images/Article_2.avif",
     title: "Editable Features",
-    description: "Customize layouts effortlessly using drag-and-drop and resizing functionalities.",
+    description:
+      "Experience the power of full customization with advanced drag-and-drop and resizing capabilities. Adapt layouts to suit specific needs effortlessly, whether you're organizing patient data, adjusting report formats, or designing visual presentations. These features ensure flexibility and precision, empowering users to manage information with ease and control.",
   },
   {
     image: "/images/Article_3.webp",
     title: "PDF Export",
-    description: "Export your customized data and reports to PDF format with just a click.",
+    description:
+      "Seamlessly export data and reports into a polished PDF format with a single click. Whether you need professional-grade documents for presentations, detailed patient summaries, or archival purposes, this feature ensures accuracy and style. Enjoy the convenience of instantly sharing or storing valuable information in a universally accessible format.",
   },
 ];
 
