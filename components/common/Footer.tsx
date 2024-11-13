@@ -3,12 +3,12 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="grid bg-black opacity-90 w-full h-[100px] text-white [grid-template-areas:'copyright_sns_githubInfo''footer_footer_forWhat']">
+    <div className="grid bg-black opacity-90 w-full h-[100px] text-white [grid-template-areas:'copyright_githubInfo''sns_forWhat'] md:[grid-template-areas:'copyright_sns_githubInfo''footer_footer_forWhat']">
       <div className="p-2 font-roboto text-lg" style={{ gridArea: "copyright" }}>
         Copyright APPAMOA @2024
       </div>
 
-      <div className="pt-2 pb-14 flex justify-center gap-6 " style={{ gridArea: "sns" }}>
+      <div className="flex px-2 py-3 justify-start gap-6 md:pb-14 md:justify-center" style={{ gridArea: "sns" }}>
         <Link href={"https://www.facebook.com"}>
           <Image width={22} height={22} src={"/icons/facebook.png"} alt="페이스북" />
         </Link>

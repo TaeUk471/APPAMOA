@@ -14,6 +14,8 @@ export default {
     extend: {
       fontFamily: {
         pretendard: ["var(--font-pretendard)"],
+        roboto: ["Roboto", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         black: "#1B1B1B",
@@ -49,6 +51,10 @@ export default {
       },
       spacing: {
         6: "1.5rem",
+      },
+      screens: {
+        tb: "768px",
+        pc: "1024px",
       },
     },
   },

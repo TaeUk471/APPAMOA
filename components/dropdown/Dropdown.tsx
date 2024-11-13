@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import useClickOutSide from "@hooks/useClickOutSide";
+import useClickOutSide from "@hooks/useClickoutSide";
 import useToggle from "@hooks/useToggle";
 import usePaginationStore from "store/usePaginationStore";
 import useSelectUserStore from "store/useSelectUserStore";
