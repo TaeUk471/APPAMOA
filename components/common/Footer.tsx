@@ -8,7 +8,7 @@ const Footer = () => {
         Copyright APPAMOA @2024
       </div>
 
-      <div className="flex p-2 justify-start gap-6 md:pb-14 md:justify-center" style={{ gridArea: "sns" }}>
+      <div className="flex px-2 py-3 justify-start gap-6 md:pb-14 md:justify-center" style={{ gridArea: "sns" }}>
         <Link href={"https://www.facebook.com"}>
           <Image width={22} height={22} src={"/icons/facebook.png"} alt="페이스북" />
         </Link>
