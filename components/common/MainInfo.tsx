@@ -26,7 +26,7 @@ const MainInfo = () => {
         }`}
       />
       <div
-        className={`flex flex-col absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white gap-8 transition-opacity duration-1000 ${
+        className={`flex flex-col absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-5 text-center text-white gap-8 transition-opacity duration-1000 ${
           isTextVisible ? "opacity-100 blur-none" : "opacity-0 blur-sm"
         }`}>
         <p

@@ -52,6 +52,10 @@ export default {
       spacing: {
         6: "1.5rem",
       },
+      screens: {
+        tb: "768px",
+        lg: "1024px",
+      },
     },
   },
   plugins: [

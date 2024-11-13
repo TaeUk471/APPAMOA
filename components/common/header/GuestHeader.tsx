@@ -1,43 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+
+import useMediaQuery from "@hooks/useMediaQuery";
 
 const GuestHeader = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const isTb = useMediaQuery("(min-width: 768px");
+  // const isPc = useMediaQuery("(min-width: 1024px");
 
   return (
     <>
-      <header className="flex h-[70px] bg-purple-50 items-center justify-between shadow-md p-4 border-t-4 border-purple-700">
+      <header className="sticky top-0 right-0 z-10 flex h-[70px] bg-gradient-to-t from-purple-500 to-purple-400 items-center justify-between shadow-md p-4 border-t-4 border-stone-300">
         <div className="flex items-center gap-6">
-          <div className="relative w-14 h-14 overflow-hidden rounded-full border-4 border-purple-500 shadow-lg">
-            <Image src="/images/APPAMOA.png" layout="fill" objectFit="cover" alt="로고" />
+          <div className="relative w-20 h-20 overflow-hidden rounded-xl border-2 mix-blend-multiple border-purple-500 shadow-lg tb:w-16 tb:h-16 tb:rounded-2xl tb:border-2">
+            <Link href={"/"}>
+              <Image src="/images/APPAMOA.png" layout="fill" objectFit="cover" alt="로고" />
+            </Link>
           </div>
-          <span className="text-black font-bold text-4xl drop-shadow-lg font-roboto">APPAMOA</span>
+          {isTb && <span className="text-white font-bold text-4xl drop-shadow-lg font-roboto">APPAMOA</span>}
         </div>
 
-        <div className="flex gap-6 lg:gap-24">
-          <nav className="relative">
-            <button
-              onClick={toggleDropdown}
-              className="p-2 text-black font-bold bg-white bg-opacity-20 rounded-md hover:bg-opacity-30 transition-all cursor-pointer">
-              Contact US
+        <div className="flex gap-6">
+          <Link href={"/signin"}>
+            <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-500 hover:text-black transition-colors duration-300">
+              <p className="text-stone-200 font-bold">Join</p>
+              {/* <i className="fa fa-arrow-right text-lg text-white" /> */}
             </button>
-          </nav>
-
-          {/** 이건 로그인 회원가입 버튼들 */}
-          <div className="flex gap-3 mr-3">
-            <button className="btn-common btn-hover bg-transparent font-poppins text-black font-bold px-2 py-1 lg:px-4 lg:py-2 rounded-lg border-2 border-green-500 shadow-md hover:bg-green-500 hover:text-black transition-colors duration-300">
-              Join
-            </button>
-            <button className="btn-common btn-hover bg-transparent font-poppins text-black font-bold px-2 py-1 lg:px-4 lg:py-2 rounded-lg border-2 border-green-500 shadow-md hover:bg-green-500 hover:text-black transition-colors duration-300">
-              SignUp
-            </button>
-          </div>
+          </Link>
+          <button className="btn-common btn-hover bg-stone-700 font-poppins px-2 py-1 rounded-lg shadow-md hover:bg-purple-500 hover:text-black transition-colors duration-300">
+            <i className="fa fa-bars text-3xl font-bold text-stone-200" />
+          </button>
         </div>
       </header>
     </>
