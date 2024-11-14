@@ -2,8 +2,8 @@
 
 import useEditStore from "store/useEditStore";
 
-import EditHeader from "./header/EditHeader";
-import ViewHeader from "./header/ViewHeader";
+import ViewHeader from "./header/EditHeader";
+import EditHeader from "./header/ViewHeader";
 
 export default function GNB() {
   const isEdit = useEditStore(state => state.isEdit);

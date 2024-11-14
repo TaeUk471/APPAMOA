@@ -1,32 +1,24 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-
-// import useEditStore from "store/useEditStore"; 편집 중, 아닌지 격리
-
-import Dropdown from "@components/dropdown/Dropdown";
-import PatientList from "constant/DummyPatientList";
+import useEditStore from "store/useEditStore";
 
 import Pagination from "../Pagination";
 
 const EditHeader = () => {
+  const setIsEdit = useEditStore(state => state.setIsEdit);
+
   return (
     <>
-      <div className="sticky top-0 right-0 z-30 flex items-center justify-between h-[70px] shadow-md p-4 border-t-4 border-purple-800 bg-purple-100">
-        <Link href={"/"} className="cursor-pointer z-10">
-          <Image
-            src={"/images/APPAMOA.png"}
-            width={50}
-            height={60}
-            alt="APPAMOA"
-            className="border-3 border-purple-500"
-          />
-        </Link>
-        <div className="absolute inset-0 flex justify-center items-center">
-          <Pagination />
+      <div className="flex items-center justify-around h-[70px] bg-gray-75">
+        <div className="flex gap-6">
+          <div className="border-2 border-black p-3 bg-white rounded-md">로고</div>
+          <button className="border-2 border-black p-3 bg-white rounded-md" onClick={setIsEdit}>
+            편집 종료 버튼
+          </button>
         </div>
-        <Dropdown items={PatientList} />
+        <Pagination />
+        <div className="flex gap-6">
+          <div className="border-2 border-black p-3 bg-white rounded-md">미리보기</div>
+          <div className="border-2 border-black p-3 bg-white rounded-md">pdf 출력하기</div>
+        </div>
       </div>
     </>
   );
