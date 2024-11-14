@@ -6,7 +6,7 @@ import Link from "next/link";
 // import useEditStore from "store/useEditStore"; 편집 중, 아닌지 격리
 
 import Dropdown from "@components/dropdown/Dropdown";
-import PatientList from "constant/DummyPatientList";
+import DummyPatientList from "constant/DummyPatientList";
 
 import Pagination from "../Pagination";
 
@@ -22,7 +22,7 @@ const EditHeader = () => {
         <div className="absolute inset-0 flex justify-center items-center">
           <Pagination />
         </div>
-        <Dropdown items={PatientList} />
+        <Dropdown items={DummyPatientList} />
       </header>
     </>
   );

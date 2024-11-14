@@ -1,4 +1,4 @@
-const PatientList = [
+const DummyPatientList = [
   { examinationId: "805605462", name: "김니엘" },
   { examinationId: "202411041", name: "김모아" },
   { examinationId: "431216785", name: "김복자" },
@@ -9,4 +9,4 @@ const PatientList = [
   { examinationId: "623481111", name: "허금송" },
 ];
 
-export default PatientList;
+export default DummyPatientList;
