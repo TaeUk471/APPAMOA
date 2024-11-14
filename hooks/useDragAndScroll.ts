@@ -18,7 +18,7 @@ const useDragAndScroll = () => {
     if (!isDragging || !containerRef.current) return;
 
     const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = x - startX; // Movement in pixels
+    const walk = x - startX;
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
