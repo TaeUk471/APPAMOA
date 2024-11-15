@@ -46,7 +46,7 @@ const Banner = () => {
     clearExistingInterval();
     intervalRef.current = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % bannerImageList.length);
-    }, 7000);
+    }, 4000);
   }, [clearExistingInterval]);
 
   useEffect(() => {

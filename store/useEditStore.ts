@@ -6,7 +6,7 @@ interface EditStoreProps {
 }
 
 const useEditStore = create<EditStoreProps>(set => ({
-  isEdit: false,
+  isEdit: true,
   setIsEdit: () => set(state => ({ isEdit: !state.isEdit })),
 }));
 export default useEditStore;

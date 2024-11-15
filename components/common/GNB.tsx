@@ -1,12 +1,10 @@
 "use client";
 
-import useEditStore from "store/useEditStore";
-
-import ViewHeader from "./header/EditHeader";
-import EditHeader from "./header/ViewHeader";
+import GuestHeader from "./header/GuestHeader";
+import UserHeader from "./header/UserHeader";
 
 export default function GNB() {
-  const isEdit = useEditStore(state => state.isEdit);
+  const haveJWT = false;
 
-  return <>{isEdit ? <EditHeader /> : <ViewHeader />}</>;
+  return <>{haveJWT ? <UserHeader /> : <GuestHeader />}</>;
 }
