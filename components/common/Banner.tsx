@@ -98,11 +98,11 @@ const Banner = () => {
               <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-25%]">
                 <div className="flex flex-col gap-6">
                   <div
-                    className="text-[50px] font-bold font-roboto"
+                    className="text-[50px] tb:text-[30px] pc:text-[50px] font-bold font-roboto"
                     style={{ textShadow: "0 0 3px black, 0 0 4px white" }}>
                     {image.title}
                   </div>
-                  <div className="text-[20px] font-roboto ml-3">{image.description}</div>
+                  <div className="text-[20px] tb:text-[13px] pc:text-[20px] font-roboto ml-3">{image.description}</div>
                 </div>
               </div>
             </div>
