@@ -95,7 +95,7 @@ const Banner = () => {
             <div key={idx} className="relative w-full flex-none">
               <Image className="absolute object-cover" fill src={image.imageUrl} alt="Banner_image" priority />
               <div className="absolute h-full w-full bg-black opacity-40" />
-              <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-25%]">
+              <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-30%]">
                 <div className="flex flex-col gap-6">
                   <div
                     className="text-[50px] tb:text-[30px] pc:text-[50px] font-bold font-roboto"

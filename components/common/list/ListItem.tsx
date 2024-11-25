@@ -11,23 +11,29 @@ interface ListItemParams {
   doctor: string;
   date: number;
   result: number;
+  examinationId: string;
 }
 
 const ListItem = (items: ListItemParams) => {
   const { profileUrl, hospital, doctor, date, result } = items;
   const { color, message } = getResultStyle(result);
   const isTb = useMediaQuery("(min-width: 768px)");
-  const isSmall = useMediaQuery("(min-width:500px)");
+  const isSmall = useMediaQuery("(min-width: 500px)");
   const router = useRouter();
 
-  const handleButtonClick = (e: React.MouseEvent) => {
+  const handleEditClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    router.push(`/edit/${items.examinationId}${+items.date}`);
+  };
+
+  const handlePDFClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
   return (
     <li
       className="bg-stone-100 cursor-pointer shadow-md rounded-lg p-4 mb-4 flex flex-row gap-2"
-      onClick={() => router.push("/edit/805605462")}>
+      onClick={() => router.push(`/dashboard/${items.examinationId}${+items.date}`)}>
       {isSmall && (
         <div className="flex items-center">
           <Image className="rounded-lg" src={profileUrl} alt="Image" width={60} height={80} />
@@ -38,11 +44,11 @@ const ListItem = (items: ListItemParams) => {
           <span>HCP : </span> {doctor}
         </div>
         <div
-          className="font-roboto text-2xl pc:text-3xl text-black font-bold w-[170px] tb:w-[250px] pc:w-[300px]"
+          className="font-roboto text-xl pc:text-2xl text-black font-bold w-[170px] tb:w-[250px] pc:w-[300px]"
           style={{ gridArea: "hospital" }}>
           {hospital}
         </div>
-        <div className="font-roboto text-xl pc:text-2xl text-gray-700" style={{ gridArea: "date" }}>
+        <div className="font-roboto text-lg pc:text-xl text-gray-700" style={{ gridArea: "date" }}>
           <span className="font-semibold">Examination Date:</span> {date}
         </div>
         <div className={"font-poppins font-bold text-xl pc:text-2xl"} style={{ gridArea: "result", color: color }}>
@@ -52,13 +58,13 @@ const ListItem = (items: ListItemParams) => {
       <div className="flex flex-col pc:flex-row justify-end items-center gap-3">
         {isTb && (
           <button
-            onClick={handleButtonClick}
+            onClick={handleEditClick}
             className="flex justify-center items-center cursor-pointer z-10 w-[60px] h-[35px] pc:w-[60px] pc:h-[80px] bg-purple-400 rounded-lg">
             <i className="fa fa-pen-to-square px-2 py-4 text-3xl pc:text-5xl text-white" />
           </button>
         )}
         <button
-          onClick={handleButtonClick}
+          onClick={handlePDFClick}
           className="flex justify-center items-center cursor-pointer z-10 w-[60px] h-[80px] tb:w-[60px] tb:h-[35px] pc:w-[60px] pc:h-[80px] bg-red-400 rounded-lg">
           <i className="fa-regular fa-file-pdf px-2 py-4 text-3xl pc:text-5xl text-black" />
         </button>

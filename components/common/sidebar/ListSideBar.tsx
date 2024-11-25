@@ -1,7 +1,7 @@
 "use client";
 
 import useMediaQuery from "@hooks/useMediaQuery";
-import DummyPatientList from "constant/DummyPatientList";
+import { DummyPatientList } from "constant/DummyPatientList";
 
 import PatientList from "./ListSideBar/PatientList";
 

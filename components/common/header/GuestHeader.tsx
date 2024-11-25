@@ -11,7 +11,7 @@ const GuestHeader = () => {
 
   return (
     <>
-      <header className="sticky top-0 right-0 z-10 flex h-[70px] bg-gradient-to-t from-purple-500 to-purple-400 items-center justify-between shadow-md p-4 border-t-4 border-stone-300">
+      <header className="sticky top-0 right-0 z-20 flex h-[70px] bg-gradient-to-t from-purple-500 to-purple-400 items-center justify-between shadow-md p-4 border-t-4 border-stone-300">
         <div className="flex items-center gap-6">
           <div className="relative w-20 h-20 overflow-hidden rounded-xl border-2 mix-blend-multiple border-purple-500 shadow-lg tb:w-16 tb:h-16 tb:rounded-2xl tb:border-2">
             <Link href={"/"}>

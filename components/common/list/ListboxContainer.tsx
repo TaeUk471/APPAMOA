@@ -2,79 +2,15 @@
 
 import { useEffect } from "react";
 
+import { DummyPatientList } from "constant/DummyPatientList";
 import useSelectUserStore from "store/useSelectUserStore";
 
 import ListItem from "./ListItem";
 
-// 상수 데이터 정의
-const ListItems = [
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Seoul General Hospital",
-    doctor: "Dr. Kim",
-    date: 20241115,
-    result: 60,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Busan Medical Center",
-    doctor: "Dr. Lee",
-    date: 20241114,
-    result: 23,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Incheon City Hospital",
-    doctor: "Dr. Park",
-    date: 20241113,
-    result: 78,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Seoul General Hospital",
-    doctor: "Dr. Kim",
-    date: 20241115,
-    result: 85,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Busan Medical Center",
-    doctor: "Dr. Lee",
-    date: 20241114,
-    result: 14,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Incheon City Hospital",
-    doctor: "Dr. Park",
-    date: 20241113,
-    result: 68,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Seoul General Hospital",
-    doctor: "Dr. Kim",
-    date: 20241115,
-    result: 82,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Busan Medical Center",
-    doctor: "Dr. Lee",
-    date: 20241114,
-    result: 92,
-  },
-  {
-    profileUrl: "/images/고먐미.jpeg",
-    hospital: "Incheon City Hospital",
-    doctor: "Dr. Park",
-    date: 20241113,
-    result: 78,
-  },
-];
-
 const ListBoxContainer = () => {
   const selectPatient = useSelectUserStore(state => state.user);
+  const ListItems =
+    DummyPatientList.find(patient => patient.examinationId === selectPatient.examinationId)?.examinationList || [];
 
   useEffect(() => {
     console.log(selectPatient);
@@ -94,6 +30,7 @@ const ListBoxContainer = () => {
             doctor={item.doctor}
             date={item.date}
             result={item.result}
+            examinationId={item.examinationId}
           />
         ))
       ) : (

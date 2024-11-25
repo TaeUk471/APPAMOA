@@ -1,3 +1,3 @@
-export const generatePageId = (name: string, examinationId: string, pageNumber: number): string => {
-  return `${name}${examinationId}${pageNumber}`;
+export const generatePageId = (examinationId: string, date: string, pageNumber: number): string => {
+  return `${examinationId}${date}${pageNumber}`;
 };
