@@ -5,19 +5,19 @@ import { generatePageId } from "../utils/generatePageId";
 interface PaginationState {
   pages: string[];
   currentPageIndex: number;
-  addPage: (name: string, date: string) => void;
+  addPage: (examinationId: string, date: string) => void;
   removeLastPage: () => void;
   setCurrentPageIndex: (index: number) => void;
-  resetPages: (name: string, examinationId: string) => void;
+  resetPages: (examinationId: string, date: string) => void;
 }
 
 const usePaginationStore = create<PaginationState>(set => ({
   pages: [],
   currentPageIndex: 0,
 
-  addPage: (name, examinationId) =>
+  addPage: (examinationId, date) =>
     set(state => {
-      const newPageId = generatePageId(name, examinationId, state.pages.length + 1);
+      const newPageId = generatePageId(examinationId, date, state.pages.length + 1);
       return {
         pages: [...state.pages, newPageId],
       };
@@ -33,12 +33,12 @@ const usePaginationStore = create<PaginationState>(set => ({
       currentPageIndex: index >= 0 && index < state.pages.length ? index : state.currentPageIndex,
     })),
 
-  resetPages: (name, examinationId) =>
+  resetPages: (examinationId, date) =>
     set(() => ({
       pages: [
-        generatePageId(name, examinationId, 1),
-        generatePageId(name, examinationId, 2),
-        generatePageId(name, examinationId, 3),
+        generatePageId(examinationId, date, 1),
+        generatePageId(examinationId, date, 2),
+        generatePageId(examinationId, date, 3),
       ],
       currentPageIndex: 0,
     })),

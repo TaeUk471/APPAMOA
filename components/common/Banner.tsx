@@ -46,7 +46,7 @@ const Banner = () => {
     clearExistingInterval();
     intervalRef.current = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % bannerImageList.length);
-    }, 7000);
+    }, 4000);
   }, [clearExistingInterval]);
 
   useEffect(() => {
@@ -95,14 +95,14 @@ const Banner = () => {
             <div key={idx} className="relative w-full flex-none">
               <Image className="absolute object-cover" fill src={image.imageUrl} alt="Banner_image" priority />
               <div className="absolute h-full w-full bg-black opacity-40" />
-              <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-25%]">
+              <div className="absolute h-full w-full p-4 text-white top-[5%] left-[5%] tb:left-[50%] tb:translate-x-[-30%]">
                 <div className="flex flex-col gap-6">
                   <div
-                    className="text-[50px] font-bold font-roboto"
+                    className="text-[50px] tb:text-[30px] pc:text-[50px] font-bold font-roboto"
                     style={{ textShadow: "0 0 3px black, 0 0 4px white" }}>
                     {image.title}
                   </div>
-                  <div className="text-[20px] font-roboto ml-3">{image.description}</div>
+                  <div className="text-[20px] tb:text-[13px] pc:text-[20px] font-roboto ml-3">{image.description}</div>
                 </div>
               </div>
             </div>

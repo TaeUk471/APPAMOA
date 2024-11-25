@@ -8,7 +8,7 @@ const LandingInfo = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTextVisible(true);
-    }, 500);
+    }, 750);
     return () => clearTimeout(timer);
   }, []);
 
