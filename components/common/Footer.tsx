@@ -10,13 +10,14 @@ const Footer = () => {
 
       <div className="flex px-2 py-3 justify-start gap-6 md:pb-14 md:justify-center" style={{ gridArea: "sns" }}>
         <Link href={"https://www.facebook.com"}>
-          <Image width={22} height={22} src={"/icons/facebook.png"} alt="페이스북" />
+          {/* <Image width={22} height={22} src={"/icons/facebook.png"} alt="페이스북" /> */}
+          <i className="fab fa-facebook text-[22px] mix-blend-multiple" />
         </Link>
         <Link href={"https://www.instagram.com/"}>
-          <Image width={22} height={22} src={"/icons/instagram.png"} alt="인스타그램" />
+          <i className="fab fa-instagram text-[22px] mix-blend-multiple" />
         </Link>
         <Link href={"https://www.twitter.com/"}>
-          <Image width={22} height={22} src={"/icons/twitter.png"} alt="트위터" />
+          <i className="fab fa-twitter text-[22px] mix-blend-multiple" />
         </Link>
       </div>
 
