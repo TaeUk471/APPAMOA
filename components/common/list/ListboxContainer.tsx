@@ -18,7 +18,7 @@ const ListBoxContainer = () => {
 
   return (
     <div
-      className="bg-stone-400 m-1 rounded-lg p-4 overflow-y-auto scrollbar-thin scrollbar-hide h-[100vh]"
+      className="bg-stone-400 my-1 rounded-sm p-4 overflow-y-auto scrollbar-thin scrollbar-hide h-[100vh]"
       // style={{ maxHeight: "calc(100vh - 100px)" }}
     >
       {selectPatient.name !== "" ? (

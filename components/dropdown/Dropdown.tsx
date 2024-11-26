@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
-import useClickOutSide from "@hooks/useClickoutSide";
+import useClickOutSide from "@hooks/useClickOutSide";
 import useToggle from "@hooks/useToggle";
 import { DummyPatientList } from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";

@@ -2,6 +2,7 @@
 
 import UploadDiv from "./ElementSIdebar/UploadDiv";
 import UploadImage from "./ElementSIdebar/UploadImage";
+import UploadPDF from "./ElementSIdebar/UploadPDF";
 import UploadPreformattedText from "./ElementSIdebar/UploadPreformattedText";
 import UploadTable from "./ElementSIdebar/UploadTable";
 import UploadTemplate from "./ElementSIdebar/UploadTemplate";
@@ -15,6 +16,7 @@ const ElementSidebar = ({ pageId }: { pageId: string }) => {
       <UploadTable pageId={pageId} />
       <UploadTextArea pageId={pageId} />
       <UploadPreformattedText pageId={pageId} />
+      <UploadPDF pageId={pageId} mode={"single"} />
       <UploadTemplate pageId={pageId} />
     </div>
   );

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import useClickOutSide from "@hooks/useClickoutSide";
+import useClickOutSide from "@hooks/useClickOutSide";
 import useToggle from "@hooks/useToggle";
 
 const UploadTemplate = ({ pageId }: { pageId: string }) => {
