@@ -1,6 +1,6 @@
 "use client";
 
-import { pdfToMemberMapping } from "constant/pdfToMemberMapping";
+// import { pdfToMemberMapping } from "constant/pdfToMemberMapping";
 
 import UploadDiv from "./ElementSIdebar/UploadDiv";
 import UploadImage from "./ElementSIdebar/UploadImage";
@@ -18,7 +18,7 @@ const ElementSidebar = ({ pageId }: { pageId: string }) => {
       <UploadTable pageId={pageId} />
       <UploadTextArea pageId={pageId} />
       <UploadPreformattedText pageId={pageId} />
-      <UploadPDF pageId={pageId} mode={"multiple"} pdfToMemberMapping={pdfToMemberMapping} />
+      <UploadPDF pageId={pageId} mode={"single"} />
       <UploadTemplate pageId={pageId} />
     </div>
   );

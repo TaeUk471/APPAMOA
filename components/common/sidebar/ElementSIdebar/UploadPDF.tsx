@@ -42,6 +42,7 @@ const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
         const mappedPageId = pdfToMemberMapping[fileIndex.toString()];
         if (mappedPageId) {
           const fileUrl = URL.createObjectURL(file);
+          console.log(`Processing PDF with ID: ${mappedPageId}`);
           await processPDF(fileUrl, mappedPageId);
         } else {
           console.warn(`PDF "${file.name}"에 해당하는 매핑 ID가 없습니다.`);

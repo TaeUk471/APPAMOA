@@ -14,7 +14,7 @@ const UploadTable = ({ pageId }: { pageId: string }) => {
   };
 
   return (
-    <div className={"fixed left-0 transition-all w-14 h-fit top-[180px] flex flex-col"}>
+    <div className={"fixed left-0 transition-all w-14 h-fit top-[280px] flex flex-col"}>
       <div className={"flex justify-between items-center"}>
         <input
           type="file"

@@ -6,6 +6,7 @@ import usePaginationStore from "store/usePaginationStore";
 export const processPDF = async (pdfUrl: string, pageId: string, specificPage?: number, maxPages: number = 60) => {
   const addSelectImageComponent = usePageDataStore.getState().addSelectImageComponent;
   const addPage = usePaginationStore.getState().addPage;
+  const pages = usePageDataStore.getState().pages;
 
   try {
     const pdfDocument: PDFDocumentProxy = await getDocument(pdfUrl).promise;
@@ -32,7 +33,10 @@ export const processPDF = async (pdfUrl: string, pageId: string, specificPage?: 
       await page.render({ canvasContext: context, viewport }).promise;
       const imageData = canvas.toDataURL("image/png");
 
+      console.log(examinationId, date, "나 제대로 나오니?");
       addPage(examinationId, date);
+      console.log(pages, "페이지 리스트 함보자");
+
       const newPageId = `${examinationId}${date}${pageNum}`;
       addSelectImageComponent(newPageId, imageData, 0, 0, 793.7, 1122.3);
     };

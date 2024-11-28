@@ -10,7 +10,7 @@ const UploadTextArea = ({ pageId }: { pageId: string }) => {
   const handleButtonClick = () => handleUploadTextArea(pageId, "No Data Available", false, "");
 
   return (
-    <div className={"fixed left-0 transition-all w-14 h-fit top-[280px] flex flex-col"}>
+    <div className={"fixed left-0 transition-all w-14 h-fit top-[180px] flex flex-col"}>
       <div className={"flex justify-between items-center"}>
         <button onClick={handleButtonClick}>
           <i className={"fa fa-message cursor-pointer px-[10px] py-4 bg-pink-300 rounded-r-lg "} />

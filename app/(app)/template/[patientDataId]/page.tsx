@@ -2,12 +2,8 @@
 
 import { notFound, useParams } from "next/navigation";
 import React, { useEffect } from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 
 import DropContainer from "@components/common/DropContainer";
-import ElementSidebar from "@components/common/sidebar/ElementSidebar";
-import RightSidebar from "@components/common/sidebar/RightSidebar";
 import { DummyPatientList } from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";
 import useSelectUserStore from "store/useSelectUserStore";
@@ -35,13 +31,9 @@ const TemplatePage = () => {
   }, [examinationId]);
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="drag-and-drop-area">
-        <DropContainer pageId={currentPage} />
-      </div>
-      <ElementSidebar pageId={currentPage} />
-      <RightSidebar pageId={currentPage} />
-    </DndProvider>
+    <>
+      <DropContainer pageId={currentPage} />
+    </>
   );
 };
 
