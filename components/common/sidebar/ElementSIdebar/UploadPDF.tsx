@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 interface UploadPDFProps {
   mode: "single" | "multiple";
   pageId?: string;
-  pdfToMemberMapping?: Record<number, string>;
+  pdfToMemberMapping?: Record<string, string>;
 }
 
 const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
@@ -31,13 +31,20 @@ const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
       setPdfInfo({ url, numPages: pdfDocument.numPages });
     } else if (mode === "multiple" && pdfToMemberMapping) {
       const files = Array.from(event.target.files);
-      for (const [index, file] of files.entries()) {
-        const fileUrl = URL.createObjectURL(file);
-        const mappedPageId = pdfToMemberMapping[index + 1];
+      for (const file of files) {
+        const fileName = file.name.replace(/\.pdf$/, "");
+        console.log("filenmae", fileName);
+        const fileIndex = parseInt(fileName, 10);
+        if (isNaN(fileIndex)) {
+          console.warn(`파일 이름 "${file.name}"에서 숫자를 추출하지 못했습니다.`);
+          continue;
+        }
+        const mappedPageId = pdfToMemberMapping[fileIndex.toString()];
         if (mappedPageId) {
+          const fileUrl = URL.createObjectURL(file);
           await processPDF(fileUrl, mappedPageId);
         } else {
-          console.warn(`PDF ${index + 1}에 해당하는 매핑 ID가 없습니다.`);
+          console.warn(`PDF "${file.name}"에 해당하는 매핑 ID가 없습니다.`);
         }
       }
     }
