@@ -1,7 +1,7 @@
 "use client";
 
-import { GlobalWorkerOptions } from "pdfjs-dist";
-import React, { useRef } from "react";
+import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
+import React, { useRef, useState } from "react";
 
 import { processPDF } from "@utils/processPDF";
 
@@ -17,37 +17,63 @@ interface UploadPDFProps {
 
 const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  // const { isOpen, open, close, toggle } = useToggle(false);
+  const [pdfInfo, setPdfInfo] = useState<{ url: string; numPages: number } | null>(null);
+  const [specificPage, setSpecificPage] = useState<string>("");
 
   const handleFilesUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
 
-    const files = Array.from(event.target.files);
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
 
     if (mode === "single") {
-      if (!pageId) {
-        console.error("pageId가 필요합니다.");
-        return;
-      }
-
-      const url = URL.createObjectURL(files[0]);
-      await processPDF(url, pageId);
-    } else if (mode === "multiple") {
-      if (!pdfToMemberMapping) {
-        console.error("pdfToMemberMapping이 필요합니다.");
-        return;
-      }
-
+      const pdfDocument = await getDocument(url).promise;
+      setPdfInfo({ url, numPages: pdfDocument.numPages });
+    } else if (mode === "multiple" && pdfToMemberMapping) {
+      const files = Array.from(event.target.files);
       for (const [index, file] of files.entries()) {
-        const url = URL.createObjectURL(file);
+        const fileUrl = URL.createObjectURL(file);
         const mappedPageId = pdfToMemberMapping[index + 1];
         if (mappedPageId) {
-          await processPDF(url, mappedPageId);
+          await processPDF(fileUrl, mappedPageId);
         } else {
-          console.warn(`PDF ${index + 1}에 해당하는 회원번호가 없습니다.`);
+          console.warn(`PDF ${index + 1}에 해당하는 매핑 ID가 없습니다.`);
         }
       }
     }
+  };
+
+  const handleRenderAllPages = async () => {
+    if (!pdfInfo || !pageId) {
+      alert("PDF가 선택되지 않았거나 pageId가 없습니다.");
+      return;
+    }
+
+    for (let i = 1; i <= pdfInfo.numPages; i++) {
+      await processPDF(pdfInfo.url, pageId, i);
+    }
+    clearPDFInfo();
+  };
+
+  const handleRenderSpecificPage = async () => {
+    if (!pdfInfo || !pageId || !specificPage) {
+      alert("PDF와 페이지 번호를 선택해주세요.");
+      return;
+    }
+
+    const pageNum = parseInt(specificPage, 10);
+    if (pageNum < 1 || pageNum > pdfInfo.numPages) {
+      alert(`유효한 페이지 번호를 입력해주세요. (1-${pdfInfo.numPages})`);
+      return;
+    }
+
+    await processPDF(pdfInfo.url, pageId, pageNum);
+    clearPDFInfo();
+  };
+
+  const clearPDFInfo = () => {
+    setPdfInfo(null);
+    setSpecificPage("");
   };
 
   return (
@@ -56,21 +82,39 @@ const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
         type="file"
         ref={fileInputRef}
         accept="application/pdf"
-        multiple={mode === "multiple"}
         onChange={handleFilesUpload}
+        multiple={mode === "multiple"}
         className="hidden"
       />
-      <div className="cursor-pointer ">
-        {mode === "single" ? (
-          <button onClick={() => fileInputRef.current?.click()}>
-            <i className="fa-regular fa-file-pdf bg-pink-300 px-[12px] py-4 rounded-r-lg" />
-          </button>
-        ) : (
-          <button onClick={() => fileInputRef.current?.click()}>
-            <i className="fa-regular fa-file-pdf bg-purple-300 px-[12px] py-4 rounded-r-lg" />
-          </button>
-        )}
+
+      <div className="cursor-pointer">
+        <button onClick={() => fileInputRef.current?.click()}>
+          <i className="fa-regular fa-file-pdf bg-pink-300 px-[12px] py-4 rounded-r-lg" />
+        </button>
       </div>
+
+      {mode === "single" && pdfInfo && (
+        <div className="absolute left-[50px] top-[-20px] flex flex-col items-center space-y-4">
+          <button
+            onClick={handleRenderAllPages}
+            className="bg-pink-500 hover:bg-pink-600 text-white text-center px-4 py-2 rounded-lg shadow-md w-24">
+            All
+          </button>
+
+          <div className="flex flex-col items-center space-y-2 bg-purple-500 hover:bg-purple-600 rounded-2xl shadow-md">
+            <input
+              type="text"
+              placeholder={`Enter page (1-${pdfInfo.numPages})`}
+              value={specificPage}
+              onChange={e => setSpecificPage(e.target.value)}
+              className="border border-gray-300 rounded px-2 py-1 text-sm w-32"
+            />
+            <button onClick={handleRenderSpecificPage} className=" text-white px-4 py-2">
+              Choose
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
