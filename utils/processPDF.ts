@@ -3,7 +3,7 @@ import { getDocument, PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
 import usePageDataStore from "store/usePageDataStore";
 import usePaginationStore from "store/usePaginationStore";
 
-export const processPDF = async (pdfUrl: string, pageId: string, specificPage?: number, maxPages: number = 60) => {
+export const processPDF = async (pdfUrl: string, pageId: string, specificPage?: number, maxPages: number = 70) => {
   const addSelectImageComponent = usePageDataStore.getState().addSelectImageComponent;
   const addPage = usePaginationStore.getState().addPage;
   const pages = usePageDataStore.getState().pages;

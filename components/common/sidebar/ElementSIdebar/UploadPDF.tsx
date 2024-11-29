@@ -105,7 +105,7 @@ const UploadPDF = ({ mode, pageId, pdfToMemberMapping }: UploadPDFProps) => {
         <div className="absolute left-[50px] top-[-20px] flex flex-col items-center space-y-4">
           <button
             onClick={handleRenderAllPages}
-            className="bg-pink-500 hover:bg-pink-600 text-white text-center px-4 py-2 rounded-lg shadow-md w-24">
+            className="bg-purple-500 hover:bg-purple-600 text-white text-center px-4 py-2 rounded-lg shadow-md w-24">
             All
           </button>
 

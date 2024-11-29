@@ -49,6 +49,16 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     }));
   };
 
+  useEffect(() => {
+    const updatePages = () => {
+      const updatedPages = usePageDataStore.getState().pages;
+      console.log("Updated Pages:", updatedPages);
+    };
+    const unsubscribe = usePageDataStore.subscribe(updatePages);
+    updatePages();
+    return () => unsubscribe();
+  }, []);
+
   const dragProps = registMouseDownDrag(handleDragChange, true);
 
   const handleClearSelect = (e: React.MouseEvent) => {

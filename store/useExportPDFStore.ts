@@ -45,7 +45,7 @@ const useExportPDFStore = create(() => ({
           const pdfWidth = pdf.internal.pageSize.getWidth();
           const pdfHeight = pdf.internal.pageSize.getHeight();
 
-          if (i > 0) pdf.addPage(); // 첫 페이지 이후에 추가
+          if (i > 0) pdf.addPage();
 
           pdf.addImage(imageData, "PNG", 0, 0, pdfWidth, pdfHeight);
         } else {
