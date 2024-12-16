@@ -1,7 +1,7 @@
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
-import useClickOutSide from "@hooks/useClickoutSide";
+import useClickOutSide from "@hooks/useClickOutSide";
 import useToggle from "@hooks/useToggle";
 import { DummyPatientList } from "constant/DummyPatientList";
 import usePaginationStore from "store/usePaginationStore";
@@ -23,6 +23,7 @@ const Dropdown = ({ items }: DropdownProps) => {
   const { user, setUser } = useSelectUserStore();
   const resetPages = usePaginationStore(state => state.resetPages);
   const router = useRouter();
+  const pathname = usePathname();
 
   const PatientData = useMemo(() => {
     return DummyPatientList.reduce(
@@ -45,9 +46,11 @@ const Dropdown = ({ items }: DropdownProps) => {
     if (!dateList || currentDateIndex < 0 || currentDateIndex >= dateList.length) return;
 
     const newDate = dateList[currentDateIndex]?.toString();
+
     if (newDate) {
+      const basePath = pathname.includes("/template") ? "/template" : "/edit";
       resetPages(user.examinationId, newDate);
-      router.push(`/edit/${user.examinationId}${newDate}`);
+      router.push(`${basePath}/${user.examinationId}${newDate}`);
     }
   }, [user, currentDateIndex, PatientData, resetPages, router]);
 

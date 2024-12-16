@@ -18,7 +18,7 @@
     "requireConfigFile": false
   },
   "plugins": ["react", "@typescript-eslint", "import"],
-  "ignorePatterns": ["build/"],
+  "ignorePatterns": ["build/", "public/pdf.worker.min.js"],
   "rules": {
     "import/order": [
       "error",

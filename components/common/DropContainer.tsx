@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useRef, useEffect, useState } from "react";
 
 import registMouseDownDrag from "@utils/registDrag";
@@ -14,6 +15,7 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
   const pages = usePageDataStore(state => state.pages);
   const pageData = pages[pageId];
   const clearSelection = useSelectionStore(state => state.clearSelection);
+  const pathname = usePathname();
 
   const updateOffset = () => {
     if (dropRef.current) {
@@ -47,6 +49,16 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
     }));
   };
 
+  useEffect(() => {
+    const updatePages = () => {
+      const updatedPages = usePageDataStore.getState().pages;
+      console.log("Updated Pages:", updatedPages);
+    };
+    const unsubscribe = usePageDataStore.subscribe(updatePages);
+    updatePages();
+    return () => unsubscribe();
+  }, []);
+
   const dragProps = registMouseDownDrag(handleDragChange, true);
 
   const handleClearSelect = (e: React.MouseEvent) => {
@@ -61,7 +73,9 @@ const DropContainer = ({ pageId }: { pageId: string }) => {
       {...dragProps}
       id={`a4-container-${pageId}`}
       onClick={handleClearSelect}
-      className="w-[793.7px] h-[1122.3px] m-auto bg-white relative border-2 border-black overflow-hidden p-[10px]">
+      className={`m-auto bg-white relative border-2 border-black overflow-hidden p-[10px] ${
+        pathname.includes("/template") ? "w-[396.85px] h-[561.15px]" : "w-[793.7px] h-[1122.3px]"
+      }`}>
       {pageData?.imageSet?.map(image => (
         <DraggableResizableComponent
           key={image.id}

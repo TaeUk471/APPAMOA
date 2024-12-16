@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import useClickOutSide from "@hooks/useClickoutSide";
+import useClickOutSide from "@hooks/useClickOutSide";
 import useToggle from "@hooks/useToggle";
 import useExportPDFStore from "store/useExportPDFStore";
 
